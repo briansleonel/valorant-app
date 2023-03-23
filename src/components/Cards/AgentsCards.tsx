@@ -3,7 +3,7 @@ import { agentsApi } from "../../api/agents.api";
 import { IAgentApi } from "../../types/agents";
 
 interface Props {
-    data: Array<IAgentApi> | null
+    data: Array<IAgentApi> | null;
 }
 
 interface PropsAgentCard {
@@ -11,7 +11,6 @@ interface PropsAgentCard {
 }
 
 const AgentsCards = ({ data }: Props) => {
-
     return (
         <section>
             {data!.length !== 0

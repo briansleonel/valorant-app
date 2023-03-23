@@ -10,6 +10,7 @@ export interface ResponseApi<T> {
 interface ParametersApi {
     language: string;
     uuid?: string;
+    isPlayableCharacter?: boolean;
 }
 
 interface BaseObject {
