@@ -1,8 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import FiltersComponent from "../components/Filter/Filters";
-import { Agents } from "./Agents";
 
-export const GameInfo = () => {
+const GameInfo = () => {
     return (
         <>
             <h1>Game Information</h1>
@@ -18,3 +17,5 @@ export const GameInfo = () => {
         </>
     );
 };
+
+export default GameInfo;

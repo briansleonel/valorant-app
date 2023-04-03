@@ -1,33 +1,59 @@
 import { useEffect, useState } from "react";
-import { agentsApi } from "../api/agents.api";
-import { IAgentApi } from "../types/agents";
 import AgentsCards from "../components/Cards/AgentsCards";
-import { useAppSelector } from "../app/hooks-redux";
+import { useAppDispatch, useAppSelector } from "../app/hooks-redux";
+import { fetchAgents } from "../reducers/agents/fetchAgents";
 
-export const Agents = (): JSX.Element => {
-    const [agentsData, setAgentsData] = useState<Array<IAgentApi> | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+const AgentsPage = (): JSX.Element => {
+    const dispatch = useAppDispatch();
+    const { status, data } = useAppSelector((state) => state.agents);
+
     const { language, order, displayName } = useAppSelector(
         (state) => state.filters
     );
 
+    /*
     useEffect(() => {
-        agentsApi
-            .getAll({
+        dispatch(
+            fetchAgents({
                 language: language || "en-US",
                 isPlayableCharacter: true,
             })
-            .then((res) => {
-                setAgentsData(res.data);
-                setTimeout(() => setLoading(false), 1000);
-                //setLoading(false);
-            })
-            .catch((err) => console.error(err));
+        );
+        console.log("First load...");
+    }, []);
+    */
 
-        console.log(language);
+    useEffect(() => {
+        dispatch(
+            fetchAgents({
+                language: language || "en-US",
+                isPlayableCharacter: true,
+            })
+        );
+        console.log(`Change language to ${language}`);
     }, [language]);
 
+    /*
+    useEffect(() => {
+        if (displayName !== undefined) {
+            //const regexp = new RegExp(`${displayName}*`, "i");
+
+            
+            dispatch(findByDisplayNameAgent({ displayName: displayName }));
+            
+        }
+    }, [displayName]);
+    */
+
     return (
-        <>{loading ? <h1>Loading...</h1> : <AgentsCards data={agentsData} />}</>
+        <>
+            {status === "loading" ? (
+                <h1>Loading...</h1>
+            ) : (
+                <AgentsCards data={data} />
+            )}
+        </>
     );
 };
+
+export default AgentsPage;

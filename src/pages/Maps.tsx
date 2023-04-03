@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { IMapApi } from "../types/maps";
 import { mapsApi } from "../api/map.api";
 import MapsCards from "../components/Cards/MapsCards";
+import { useAppDispatch, useAppSelector } from "../app/hooks-redux";
+import { fetchMaps } from "../reducers/maps/fetchMaps";
 
-export const MapsPage = (): JSX.Element => {
+const MapsPage = (): JSX.Element => {
+    /*
     const [mapsData, setMapsData] = useState<Array<IMapApi> | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -17,6 +20,34 @@ export const MapsPage = (): JSX.Element => {
             })
             .catch((err) => console.error(err));
     }, []);
+    */
 
-    return <>{loading ? <h1>Loading...</h1> : <MapsCards data={mapsData} />}</>;
+    const dispatch = useAppDispatch();
+    const { status, data } = useAppSelector((state) => state.maps);
+
+    const { language, order, displayName } = useAppSelector(
+        (state) => state.filters
+    );
+
+    useEffect(() => {
+        dispatch(
+            fetchMaps({
+                language: language || "en-US",
+                isPlayableCharacter: true,
+                endpoint: "maps",
+            })
+        );
+    }, [language]);
+
+    return (
+        <>
+            {status === "loading" ? (
+                <h1>Loading...</h1>
+            ) : (
+                <MapsCards data={data} />
+            )}
+        </>
+    );
 };
+
+export default MapsPage;

@@ -1,26 +1,34 @@
-import { useEffect, useState } from "react";
-import { IGamemodeApi } from "../types/gamemodes";
+import { useEffect } from "react";
 import GamemodesCards from "../components/Cards/GamemodesCards";
-import { gamemodesApi } from "../api/gamemodes.api";
+import { useAppDispatch, useAppSelector } from "../app/hooks-redux";
+import { fetchGamemodes } from "../reducers/gamemodes/fetchGamemodes";
 
-export const GamemodesPage = (): JSX.Element => {
-    const [mapsData, setMapsData] = useState<Array<IGamemodeApi> | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+const GamemodesPage = (): JSX.Element => {
+    const dispatch = useAppDispatch();
+    const { status, data } = useAppSelector((state) => state.gamemodes);
+
+    const { language, order, displayName } = useAppSelector(
+        (state) => state.filters
+    );
 
     useEffect(() => {
-        gamemodesApi
-            .getAll({ language: "es-MX" })
-            .then((res) => {
-                setMapsData(res.data);
-                setTimeout(() => setLoading(false), 1000);
-                //setLoading(false);
+        dispatch(
+            fetchGamemodes({
+                language: language || "en-US",
+                isPlayableCharacter: true,
             })
-            .catch((err) => console.error(err));
-    }, []);
+        );
+    }, [language]);
 
     return (
         <>
-            {loading ? <h1>Loading...</h1> : <GamemodesCards data={mapsData} />}
+            {status === "loading" ? (
+                <h1>Loading...</h1>
+            ) : (
+                <GamemodesCards data={data} />
+            )}
         </>
     );
 };
+
+export default GamemodesPage;

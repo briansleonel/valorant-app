@@ -1,15 +1,15 @@
 import { IAgentApi } from "../types/agents";
-import { ParametersApi, ResponseApi } from "../types/api";
+import { IRequestApi, IResponseApi } from "../types/api";
 import { ENDPOINTS_API, __instanceAxios } from "./base.api";
 import { baseRequestApi } from "./generics/api.generic";
 
 const endpoint = ENDPOINTS_API.agents;
 
 export const agentsApi = {
-    getAll: function (params: ParametersApi): Promise<ResponseApi<IAgentApi>> {
+    getAll: function (params: IRequestApi): Promise<IResponseApi<IAgentApi>> {
         return baseRequestApi<IAgentApi>({ params, endpoint });
     },
-    getByID: function ({ language, uuid }: ParametersApi) {
+    getByID: function ({ language, uuid }: IRequestApi) {
         return __instanceAxios.get(`${endpoint}/${uuid}`, {
             params: {
                 language,

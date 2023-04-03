@@ -1,13 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import agentsSlice from "../reducers/agents/agentsSlice";
-import counterSlice from "../reducers/counter/counterSlice";
+import dataSlice from "../reducers/data/dataSlice";
 import filtersSlice from "../reducers/filters/filtersSlice";
+import gamemodesSlice from "../reducers/gamemodes/gamemodesSlice";
+import mapsSlice from "../reducers/maps/mapsSlice";
 
 export const store = configureStore({
     reducer: {
-        counter: counterSlice,
         agents: agentsSlice,
         filters: filtersSlice,
+        data: dataSlice,
+        maps: mapsSlice,
+        gamemodes: gamemodesSlice,
     },
 });
 

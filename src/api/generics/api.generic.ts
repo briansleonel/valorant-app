@@ -1,14 +1,14 @@
-import { ParametersApi, ResponseApi } from "../../types/api";
+import { IRequestApi, IResponseApi } from "../../types/api";
 import { __instanceAxios } from "../base.api";
 
 export async function baseRequestApi<Type>({
     params,
     endpoint,
 }: {
-    params: ParametersApi;
+    params: IRequestApi;
     endpoint: string;
-}): Promise<ResponseApi<Type>> {
-    const { data } = await __instanceAxios.get<ResponseApi<Type>>(endpoint, {
+}): Promise<IResponseApi<Type>> {
+    const { data } = await __instanceAxios.get<IResponseApi<Type>>(endpoint, {
         params: {
             language: params.language,
             uuid: params.uuid,

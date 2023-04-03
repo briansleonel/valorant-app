@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
-import { ErrorPage } from "./pages/ErrorPage";
-import { GameInfo } from "./pages/GameInfo";
-import { About } from "./pages/About";
-import { Home } from "./pages/Home";
-import { Agents } from "./pages/Agents";
-import { MapsPage } from "./pages/Maps";
-import { GamemodesPage } from "./pages/GamemodesPage";
+import ErrorPage from "./pages/ErrorPage";
+import GameInfo from "./pages/GameInfo";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import AgentsPage from "./pages/Agents";
+import MapsPage from "./pages/Maps";
+import GamemodesPage from "./pages/GamemodesPage";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: "agents",
-                        element: <Agents />,
+                        element: <AgentsPage />,
                     },
                     {
                         path: "maps",

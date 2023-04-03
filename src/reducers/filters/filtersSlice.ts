@@ -1,5 +1,4 @@
-import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import counterSlice from "../counter/counterSlice";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface FiltersState {
     displayName?: string;
@@ -10,11 +9,11 @@ interface FiltersState {
 
 const initialState: FiltersState = {
     displayName: "",
-    orderASC: true,
+    order: "A-Z",
     language: "en-US",
 };
 
-export const counterSlice = createSlice({
+export const filtersSlice = createSlice({
     name: "filters",
     initialState,
     reducers: {
@@ -34,6 +33,6 @@ export const counterSlice = createSlice({
 });
 
 export const { changeDisplayName, changeOrder, changeLanguage } =
-    counterSlice.actions;
+    filtersSlice.actions;
 
-export default counterSlice.reducer;
+export default filtersSlice.reducer;

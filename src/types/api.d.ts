@@ -2,13 +2,13 @@ import { IAgentApi } from "./agents";
 import { GamemodeApi } from "./gamemodes";
 import { IMapApi } from "./maps";
 
-export interface ResponseApi<T> {
+export interface IResponseApi<T> {
     status: number;
     data: Array<T>;
 }
 
-interface ParametersApi {
-    language: string;
+interface IRequestApi {
+    language: string | "en-US";
     uuid?: string;
     isPlayableCharacter?: boolean;
 }
@@ -16,6 +16,16 @@ interface ParametersApi {
 interface BaseObject {
     uuid: string;
     displayName: string;
+}
+
+type IFetchError = {
+    message: string;
+};
+
+export interface IState<T> {
+    status: "loading" | "idle";
+    error: string | null;
+    data: Array<T>;
 }
 /*
 export type AgentsResponseApi = {
