@@ -1,8 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
+import { RootState } from "../store";
 import { IAgentApi } from "../../types/agents";
 import { IState } from "../../types/api";
 import { fetchAgents } from "./fetchAgents";
+
+interface IAgentsAction {
+    data: Array<IAgentApi>;
+}
 
 const initialState: IState<IAgentApi> = {
     data: [],
@@ -11,10 +15,14 @@ const initialState: IState<IAgentApi> = {
 };
 
 const agentsSlice = createSlice({
-    name : "agents",
+    name: "agents",
     initialState,
-    reducers: {},
-    extraReducers : (builder) => {
+    reducers: {
+        setAgents: (state, action: PayloadAction<IAgentsAction>) => {
+            state.data = action.payload.data;
+        },
+    },
+    extraReducers: (builder) => {
         // When we send a request,
         // `fetchAgents.pending` is being fired:
         builder.addCase(fetchAgents.pending, (state) => {
@@ -43,8 +51,7 @@ const agentsSlice = createSlice({
             state.status = "idle";
         });
     },
-})
-
+});
 
 /*
 interface LoadAgents {
@@ -119,6 +126,6 @@ export const agentsSlice = createSlice({
 export const selectStatusDataAgents = (state: RootState) => state.agents.status;
 
 // export the actions
-export const { } = agentsSlice.actions;
+export const { setAgents } = agentsSlice.actions;
 
 export default agentsSlice.reducer;

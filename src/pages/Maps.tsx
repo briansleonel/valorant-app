@@ -1,53 +1,45 @@
 import { useEffect, useState } from "react";
-import { IMapApi } from "../types/maps";
-import { mapsApi } from "../api/map.api";
 import MapsCards from "../components/Cards/MapsCards";
-import { useAppDispatch, useAppSelector } from "../app/hooks-redux";
-import { fetchMaps } from "../reducers/maps/fetchMaps";
+import { useAppDispatch, useAppSelector } from "../hooks/hooks-redux";
+import { getMapsApi } from "../store/maps/fetchMaps";
+import { findDataByDisplayName, setData } from "../store/data/dataSlice";
+import { StatusData } from "../types/data.enum";
 
 const MapsPage = (): JSX.Element => {
-    /*
-    const [mapsData, setMapsData] = useState<Array<IMapApi> | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+	const dispatch = useAppDispatch();
+	const { data } = useAppSelector((state) => state.data);
+	const [status, setStatus] = useState<StatusData>(StatusData.LOAD);
 
-    useEffect(() => {
-        mapsApi
-            .getAll({ language: "es-MX" })
-            .then((res) => {
-                setMapsData(res.data);
-                setTimeout(() => setLoading(false), 1000);
-                //setLoading(false);
-            })
-            .catch((err) => console.error(err));
-    }, []);
-    */
+	const { language, order, displayName } = useAppSelector(
+		(state) => state.filters,
+	);
 
-    const dispatch = useAppDispatch();
-    const { status, data } = useAppSelector((state) => state.maps);
+	useEffect(() => {
+		setStatus(StatusData.LOADING);
+		getMapsApi({
+			language: language,
+		})
+			.then((res) => {
+				dispatch(setData(res));
+				setStatus(StatusData.LOAD);
+			})
+			.catch((err) => console.log(err));
 
-    const { language, order, displayName } = useAppSelector(
-        (state) => state.filters
-    );
+		console.log(`Change language to ${language}`);
+	}, [language]);
 
-    useEffect(() => {
-        dispatch(
-            fetchMaps({
-                language: language || "en-US",
-                isPlayableCharacter: true,
-                endpoint: "maps",
-            })
-        );
-    }, [language]);
+	useEffect(() => {
+		if (displayName !== "") {
+			dispatch(findDataByDisplayName({ displayName }));
+			console.log(`Search by displayname: '${displayName}'`);
+		}
+	}, [displayName]);
 
-    return (
-        <>
-            {status === "loading" ? (
-                <h1>Loading...</h1>
-            ) : (
-                <MapsCards data={data} />
-            )}
-        </>
-    );
+	return (
+		<>
+			{status === "loading" ? <h1>Loading...</h1> : <MapsCards data={data} />}
+		</>
+	);
 };
 
 export default MapsPage;

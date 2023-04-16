@@ -20,3 +20,9 @@ export const fetchGamemodes = createAsyncThunk<
 
     return res;
 });
+
+export const getGamemodesApi = async (
+    params: IRequestApi
+): Promise<IResponseApi<IGamemodeApi>> => {
+    return await baseRequestApi<IGamemodeApi>({ params, endpoint });
+};

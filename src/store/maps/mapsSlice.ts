@@ -1,23 +1,32 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
-import { IState } from "../../types/api";
-import { IGamemodeApi } from "../../types/gamemodes";
-import { fetchGamemodes } from "../gamemodes/fetchGamemodes";
+import { RootState } from "../store";
+import { IMapApi } from "../../types/maps";
+import { fetchMaps } from "./fetchMaps";
 
-const initialState: IState<IGamemodeApi> = {
+type MapsDataState = {
+    // In `status` we will watch
+    // if todos are being loaded.
+    status: "loading" | "idle";
+
+    // `error` will contain an error message.
+    error: string | null;
+    data: Array<IMapApi>;
+};
+
+const initialState: MapsDataState = {
     data: [],
     error: null,
     status: "idle",
 };
 
-const gamemodesSlice = createSlice({
-    name: "gamemodes",
+const mapsSlice = createSlice({
+    name: "maps",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         // When we send a request,
         // `fetchAgents.pending` is being fired:
-        builder.addCase(fetchGamemodes.pending, (state) => {
+        builder.addCase(fetchMaps.pending, (state) => {
             // At that moment,
             // we change status to `loading`
             // and clear all the previous errors:
@@ -27,7 +36,7 @@ const gamemodesSlice = createSlice({
 
         // When a server responses with the data,
         // `fetchTodos.fulfilled` is fired:
-        builder.addCase(fetchGamemodes.fulfilled, (state, { payload }) => {
+        builder.addCase(fetchMaps.fulfilled, (state, { payload }) => {
             // We add all the new todos into the state
             // and change `status` back to `idle`:
             state.data = payload.data;
@@ -36,7 +45,7 @@ const gamemodesSlice = createSlice({
         });
 
         // When a server responses with an error:
-        builder.addCase(fetchGamemodes.rejected, (state, { payload }) => {
+        builder.addCase(fetchMaps.rejected, (state, { payload }) => {
             // We show the error message
             // and change `status` back to `idle` again.
             if (payload) state.error = payload.message;
@@ -45,6 +54,6 @@ const gamemodesSlice = createSlice({
     },
 });
 
-export const selectStatusDataGamemodes = (state: RootState) => state.data.status;
+export const selectStatusDataMaps = (state: RootState) => state.data.status;
 
-export default gamemodesSlice.reducer;
+export default mapsSlice.reducer;

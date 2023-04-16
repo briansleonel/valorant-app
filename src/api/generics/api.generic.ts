@@ -14,5 +14,7 @@ export async function baseRequestApi<Type>({
             uuid: params.uuid,
         },
     });
+    console.log(`Fetch data ${__instanceAxios.getUri() + endpoint}`);
+
     return data;
 }

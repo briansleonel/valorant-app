@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface FiltersState {
     displayName?: string;
     order?: string;
-    language?: string;
+    language: string;
     role?: string;
 }
 

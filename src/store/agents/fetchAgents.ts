@@ -28,17 +28,11 @@ export const fetchAgents = createAsyncThunk<
     return res;
 });
 
-function fetchData<Type>(type: string, params: IRequestApi) {
-    return createAsyncThunk<IResponseApi<Type>, IRequestApi, {}>(
-        type,
-        async () => {
-            return await baseRequestApi<Type>({
-                params,
-                endpoint,
-            });
-        }
-    );
-}
+export const getAgentsApi = async (
+    params: IRequestApi
+): Promise<IResponseApi<IAgentApi>> => {
+    return await baseRequestApi<IAgentApi>({ params, endpoint });
+};
 
 /*
 export const fetchAgents = createAsyncThunk<ResponseApi<IAgentApi>>("agents/get", async (params: ParametersApi) => {

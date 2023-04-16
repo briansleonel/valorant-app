@@ -1,59 +1,72 @@
 import { useEffect, useState } from "react";
 import AgentsCards from "../components/Cards/AgentsCards";
-import { useAppDispatch, useAppSelector } from "../app/hooks-redux";
-import { fetchAgents } from "../reducers/agents/fetchAgents";
+import { useAppDispatch, useAppSelector } from "../hooks/hooks-redux";
+import { fetchAgents, getAgentsApi } from "../store/agents/fetchAgents";
+import { IAgentApi } from "../types/agents";
+import { findDataByDisplayName, setData } from "../store/data/dataSlice";
+
+enum StatusData {
+	LOAD = "load",
+	LOADING = "loading",
+}
 
 const AgentsPage = (): JSX.Element => {
-    const dispatch = useAppDispatch();
-    const { status, data } = useAppSelector((state) => state.agents);
+	const dispatch = useAppDispatch();
+	const { data } = useAppSelector((state) => state.data);
+	const [status, setStatus] = useState<StatusData>(StatusData.LOAD);
 
-    const { language, order, displayName } = useAppSelector(
-        (state) => state.filters
-    );
+	const { language, order, displayName } = useAppSelector(
+		(state) => state.filters,
+	);
 
-    /*
-    useEffect(() => {
-        dispatch(
-            fetchAgents({
-                language: language || "en-US",
-                isPlayableCharacter: true,
-            })
-        );
-        console.log("First load...");
-    }, []);
-    */
+	useEffect(() => {
+		//console.log(typeof JSON.parse(localStorage.getItem("__data__")));
 
-    useEffect(() => {
-        dispatch(
-            fetchAgents({
-                language: language || "en-US",
-                isPlayableCharacter: true,
-            })
-        );
-        console.log(`Change language to ${language}`);
-    }, [language]);
+		setStatus(StatusData.LOADING);
+		getAgentsApi({
+			language: language,
+			isPlayableCharacter: true,
+		})
+			.then((res) => {
+				//setShowData(res.data);
+				//localStorage.setItem("__data__", JSON.stringify(res.data));
+				dispatch(setData(res));
+				setStatus(StatusData.LOAD);
+			})
+			.catch((err) => console.log(err));
 
-    /*
-    useEffect(() => {
-        if (displayName !== undefined) {
-            //const regexp = new RegExp(`${displayName}*`, "i");
+		console.log(`Change language to ${language}`);
+	}, [language]);
 
-            
-            dispatch(findByDisplayNameAgent({ displayName: displayName }));
-            
-        }
-    }, [displayName]);
-    */
+	useEffect(() => {
+		/*
+		const locale = localStorage.getItem("__data__");
+		if (displayName !== undefined && locale !== null) {
+			const dataUpdate = JSON.parse(locale).filter((val: IAgentApi) => {
+				if (
+					val.displayName
+						.toLocaleLowerCase()
+						.includes(displayName.toLocaleLowerCase())
+				)
+					return val;
+			});
+			setShowData(dataUpdate);
+			console.log(`Search by displayname: '${displayName}'`);
+		}
+		*/
+		if (displayName !== "") {
+			dispatch(findDataByDisplayName({ displayName }));
+			console.log(`Search by displayname: '${displayName}'`);
+		}
+	}, [displayName]);
 
-    return (
-        <>
-            {status === "loading" ? (
-                <h1>Loading...</h1>
-            ) : (
-                <AgentsCards data={data} />
-            )}
-        </>
-    );
+	//const regexp = new RegExp(`${displayName}*`, "i");
+
+	return (
+		<>
+			{status === "loading" ? <h1>Loading...</h1> : <AgentsCards data={data} />}
+		</>
+	);
 };
 
 export default AgentsPage;

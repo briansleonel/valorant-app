@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { languagesApi } from "../../api/base.api";
-import { useAppDispatch, useAppSelector } from "../../app/hooks-redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks-redux";
 import {
     changeDisplayName,
     changeLanguage,
     changeOrder,
-} from "../../reducers/filters/filtersSlice";
+} from "../../store/filters/filtersSlice";
 
 interface OrderASC {
     asc: string;
@@ -21,34 +21,31 @@ const FiltersComponent = () => {
     const dispatch = useAppDispatch();
     const filters = useAppSelector((state) => state.filters);
 
+    const [inputDisplayName, setInputDisplayName] = useState<string>("");
+
     const changeDisplayNameHandler = (
         e: React.FormEvent<HTMLInputElement>
     ): void => {
+        e.preventDefault();
+        setInputDisplayName(e.currentTarget.value);
+        /*
         dispatch(
             changeDisplayName({
+                ...filters,
                 displayName: e.currentTarget.value,
             })
-        );
+        );*/
     };
 
-    const changeOrderHandler = (
-        e: React.FormEvent<HTMLSelectElement>
+    const clickSearchDisplayNameHandler = (
+        e: React.MouseEvent<HTMLButtonElement>
     ): void => {
-        console.log(e.currentTarget.name);
-
+        e.preventDefault();
+        console.log("Searching...");
         dispatch(
-            changeOrder({
-                order: e.currentTarget.value,
-            })
-        );
-    };
-
-    const changeLanguageHandler = (
-        e: React.FormEvent<HTMLSelectElement>
-    ): void => {
-        dispatch(
-            changeLanguage({
-                language: e.currentTarget.value,
+            changeDisplayName({
+                ...filters,
+                displayName: inputDisplayName,
             })
         );
     };
@@ -58,6 +55,7 @@ const FiltersComponent = () => {
             case "order":
                 dispatch(
                     changeOrder({
+                        ...filters,
                         [e.currentTarget.name]: e.currentTarget.value,
                     })
                 );
@@ -81,8 +79,12 @@ const FiltersComponent = () => {
                     type="text"
                     name="displayName"
                     id="displayName"
+                    value={inputDisplayName}
                     onChange={changeDisplayNameHandler}
                 />
+                <button type="button" onClick={clickSearchDisplayNameHandler}>
+                    Buscar
+                </button>
             </div>
             <div>
                 <label htmlFor="order">Order</label>

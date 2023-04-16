@@ -20,3 +20,9 @@ export const fetchMaps = createAsyncThunk<
 
     return res;
 });
+
+export const getMapsApi = async (
+    params: IRequestApi
+): Promise<IResponseApi<IMapApi>> => {
+    return await baseRequestApi<IMapApi>({ params, endpoint });
+};
