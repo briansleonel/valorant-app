@@ -1,45 +1,47 @@
-import { useEffect, useState } from "react";
 import MapsCards from "../components/Cards/MapsCards";
-import { useAppDispatch, useAppSelector } from "../hooks/hooks-redux";
-import { getMapsApi } from "../store/maps/fetchMaps";
-import { findDataByDisplayName, setData } from "../store/data/dataSlice";
-import { StatusData } from "../types/data.enum";
+import { useData } from "../hooks/useData";
+import { IMapApi } from "../types/maps";
 
 const MapsPage = (): JSX.Element => {
-	const dispatch = useAppDispatch();
-	const { data } = useAppSelector((state) => state.data);
-	const [status, setStatus] = useState<StatusData>(StatusData.LOAD);
-
-	const { language, order, displayName } = useAppSelector(
-		(state) => state.filters,
-	);
-
-	useEffect(() => {
-		setStatus(StatusData.LOADING);
-		getMapsApi({
-			language: language,
-		})
-			.then((res) => {
-				dispatch(setData(res));
-				setStatus(StatusData.LOAD);
-			})
-			.catch((err) => console.log(err));
-
-		console.log(`Change language to ${language}`);
-	}, [language]);
-
-	useEffect(() => {
-		if (displayName !== "") {
-			dispatch(findDataByDisplayName({ displayName }));
-			console.log(`Search by displayname: '${displayName}'`);
-		}
-	}, [displayName]);
+	const { error, isLoading, viewData } = useData<IMapApi>({
+		endpoint: "maps",
+	});
 
 	return (
 		<>
-			{status === "loading" ? <h1>Loading...</h1> : <MapsCards data={data} />}
+			{error ? (
+				<h4>Hubo un error</h4>
+			) : isLoading ? (
+				<h1>Loading...</h1>
+			) : (
+				<MapsCards data={viewData} />
+			)}
 		</>
 	);
 };
 
 export default MapsPage;
+
+/*
+	const dispatch = useAppDispatch();
+	const dataState = useAppSelector((state) => state.data);
+
+	const { language, order, displayName } = useAppSelector(
+		(state) => state.filters,
+	);
+
+	const { error, isLoading, data } = useGetMapsQuery(language);
+
+	useEffect(() => {
+		if (!isLoading) {
+			dispatch(setData(data));
+		}
+	}, [data]);
+
+	useEffect(() => {
+		if (displayName !== "") {
+			dispatch(findDataByDisplayName({ displayName, data }));
+			console.log(`Search by displayname: '${displayName}'`);
+		}
+	}, [displayName]);
+	*/

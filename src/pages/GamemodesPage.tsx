@@ -1,49 +1,47 @@
-import { useEffect, useState } from "react";
 import GamemodesCards from "../components/Cards/GamemodesCards";
-import { useAppDispatch, useAppSelector } from "../hooks/hooks-redux";
-import { fetchGamemodes, getGamemodesApi } from "../store/gamemodes/fetchGamemodes";
-import { StatusData } from "../types/data.enum";
-import { findDataByDisplayName, setData } from "../store/data/dataSlice";
+import { useData } from "../hooks/useData";
+import { IGamemodeApi } from "../types/gamemodes";
 
 const GamemodesPage = (): JSX.Element => {
-    const dispatch = useAppDispatch();
-	const { data } = useAppSelector((state) => state.data);
-	const [status, setStatus] = useState<StatusData>(StatusData.LOAD);
+	const { error, isLoading, viewData } = useData<IGamemodeApi>({
+		endpoint: "gamemodes",
+	});
+
+	return (
+		<>
+			{error ? (
+				<h4>Hubo un error</h4>
+			) : isLoading ? (
+				<h1>Loading...</h1>
+			) : (
+				<GamemodesCards data={viewData} />
+			)}
+		</>
+	);
+};
+
+export default GamemodesPage;
+
+/*
+	const dispatch = useAppDispatch();
+	const dataState = useAppSelector((state) => state.data);
 
 	const { language, order, displayName } = useAppSelector(
 		(state) => state.filters,
 	);
 
-	useEffect(() => {
-		setStatus(StatusData.LOADING);
-		getGamemodesApi({
-			language: language,
-		})
-			.then((res) => {
-				dispatch(setData(res));
-				setStatus(StatusData.LOAD);
-			})
-			.catch((err) => console.log(err));
+	const { error, isLoading, data } = useGetGamemodesQuery(language);
 
-		console.log(`Change language to ${language}`);
-	}, [language]);
+	useEffect(() => {
+		if (!isLoading) {
+			dispatch(setData(data));
+		}
+	}, [data]);
 
 	useEffect(() => {
 		if (displayName !== "") {
-			dispatch(findDataByDisplayName({ displayName }));
+			dispatch(findDataByDisplayName({ displayName, data }));
 			console.log(`Search by displayname: '${displayName}'`);
 		}
 	}, [displayName]);
-
-    return (
-        <>
-            {status === "loading" ? (
-                <h1>Loading...</h1>
-            ) : (
-                <GamemodesCards data={data} />
-            )}
-        </>
-    );
-};
-
-export default GamemodesPage;
+	*/

@@ -12,8 +12,8 @@ interface PropsGamemodeCard {
 const GamemodesCards = ({ data }: Props): JSX.Element => {
     return (
         <section>
-            {data!.length !== 0
-                ? data!.map((element) => {
+            {data !== null && data.length > 0
+                ? data.map((element) => {
                       return (
                           <Link to={"/"} key={element.uuid}>
                               <GamemodeCard gamemode={element} />

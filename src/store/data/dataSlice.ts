@@ -19,43 +19,24 @@ const initialState: DataState = {
 };
 
 const dataSlice = createSlice({
-    name: "agents",
+    name: "data",
     initialState,
     reducers: {
         setData: (state, action) => {
             state.data = action.payload.data;
         },
         findDataByDisplayName: (state, action) => {
-            const locale = localStorage.getItem("__data__");
+            const { displayName, data } = action.payload;
 
-            if (action.payload.displayName !== undefined && locale !== null) {
-                const regexp = new RegExp(
-                    `^${action.payload.displayName}`,
-                    "i"
-                );
-                
-                const dataUpdate = JSON.parse(locale).filter(
-                    (val: IAgentApi) => {
-                        if (regexp.test(val.displayName)) {
-                            return val;
-                        }
+            const regexp = new RegExp(`^${action.payload.displayName}`, "i");
 
-                        /*
-                        if (
-                            val.displayName
-                                .toLocaleLowerCase()
-                                .includes(
-                                    action.payload.displayName.toLocaleLowerCase()
-                                )
-                        )
-                            return val;
+            const dataUpdate = data.data.filter((val: IAgentApi) => {
+                if (regexp.test(val.displayName)) {
+                    return val;
+                }
+            });
 
-                            */
-                    }
-                );
-
-                state.data = dataUpdate;
-            }
+            state.data = dataUpdate;
         },
     },
 });

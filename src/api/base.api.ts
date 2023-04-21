@@ -21,7 +21,7 @@ interface ILanguage {
     value: string;
 }
 
-interface IOrder extends ILanguage {}
+//interface IOrder extends ILanguage {}
 
 export const languagesApi: Array<ILanguage> = [
     {
@@ -58,7 +58,7 @@ export const languagesApi: Array<ILanguage> = [
     },
 ];
 
-export const orderItems: Array<IOrder> = [
+export const orderItems: Array<ILanguage> = [
     {
         description: "A-Z",
         value: "ASC",

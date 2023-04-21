@@ -1,9 +1,7 @@
 import { Middleware, configureStore } from "@reduxjs/toolkit";
-import agentsSlice from "./agents/agentsSlice";
 import dataSlice from "./data/dataSlice";
 import filtersSlice from "./filters/filtersSlice";
-import gamemodesSlice from "./gamemodes/gamemodesSlice";
-import mapsSlice from "./maps/mapsSlice";
+import { valorantApi } from "../services/data";
 
 const persistanceLocalStorageMiddleware: Middleware =
     (store) => (next) => (action) => {
@@ -19,13 +17,13 @@ const persistanceLocalStorageMiddleware: Middleware =
 
 export const store = configureStore({
     reducer: {
-        agents: agentsSlice,
         filters: filtersSlice,
         data: dataSlice,
-        maps: mapsSlice,
-        gamemodes: gamemodesSlice,
+        [valorantApi.reducerPath]: valorantApi.reducer,
     },
-    middleware: [persistanceLocalStorageMiddleware],
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(valorantApi.middleware),
+    //.concat(persistanceLocalStorageMiddleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
