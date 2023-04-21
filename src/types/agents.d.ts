@@ -22,19 +22,6 @@ export interface IAgentApi {
     voiceLine: VoiceLineApi;
 }
 
-/*
-export interface Agent {
-    uuid: string;
-    displayName: string;
-    description: string;
-    developerName: string;
-    displayIcon: string;
-    displayIconSmall: string;
-    fullPortrait: string;
-    role: Role;
-    abilities: Array<Abilities>;
-} */
-
 interface Abilities {
     slot: string;
     displayName: string;

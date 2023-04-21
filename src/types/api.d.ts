@@ -27,9 +27,3 @@ export interface IState<T> {
     error: string | null;
     data: Array<T>;
 }
-/*
-export type AgentsResponseApi = {
-    status: number;
-    data: Array<IAgenteApi>;
-};
-*/

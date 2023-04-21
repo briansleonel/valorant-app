@@ -7,10 +7,14 @@ export function useFormInput(initialValue: string) {
         setValue(e.currentTarget.value);
     }
 
+    function resetInput(): void {
+        setValue("");
+    }
+
     const inputProps = {
         value: value,
         onChange: handleChange,
     };
 
-    return inputProps;
+    return { inputProps, resetInput };
 }

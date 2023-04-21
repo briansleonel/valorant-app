@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { agentsApi } from "../../api/agents.api";
 import { IMapApi } from "../../types/maps";
 
 interface Props {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { languagesApi } from "../../api/base.api";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks-redux";
 import {
@@ -22,7 +22,7 @@ const FiltersComponent = () => {
 	const dispatch = useAppDispatch();
 	const filters = useAppSelector((state) => state.filters);
 
-	const displayNameProps = useFormInput("");
+	const displayNameInput = useFormInput("");
 
 	const clickSearchDisplayNameHandler = (
 		e: React.MouseEvent<HTMLButtonElement>,
@@ -31,7 +31,20 @@ const FiltersComponent = () => {
 		dispatch(
 			changeDisplayName({
 				...filters,
-				displayName: displayNameProps.value,
+				displayName: displayNameInput.inputProps.value,
+			}),
+		);
+	};
+
+	const clickCleanSearchDisplayNameHandler = (
+		e: React.MouseEvent<HTMLButtonElement>,
+	) => {
+		e.preventDefault();
+		displayNameInput.resetInput();
+		dispatch(
+			changeDisplayName({
+				...filters,
+				displayName: "",
 			}),
 		);
 	};
@@ -65,10 +78,13 @@ const FiltersComponent = () => {
 					type="text"
 					name="displayName"
 					id="displayName"
-					{...displayNameProps}
+					{...displayNameInput.inputProps}
 				/>
 				<button type="button" onClick={clickSearchDisplayNameHandler}>
 					Buscar
+				</button>
+				<button type="button" onClick={clickCleanSearchDisplayNameHandler}>
+					Limpiar
 				</button>
 			</div>
 			<div>

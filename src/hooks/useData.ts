@@ -47,10 +47,15 @@ export function useData<T>({ endpoint }: TypeEndpoint) {
     }, [data]);
 
     useEffect(() => {
-        if (displayName !== "" && displayName !== undefined) {
-            const find = genericFindByDisplayName<T>(displayName, data.data);
-            setViewData(find);
-            console.log(`Search by displayname: '${displayName}'`);
+        if (data !== undefined) {
+            if (displayName !== undefined && displayName !== "") {
+                const find = genericFindByDisplayName<T>(
+                    displayName,
+                    data.data
+                );
+                setViewData(find);
+                console.log(`Search by displayname: '${displayName}'`);
+            } else setViewData(data.data);
         }
     }, [displayName]);
 

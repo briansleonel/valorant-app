@@ -9,21 +9,12 @@ export const ENDPOINTS_API = {
     weapons: "weapons",
 };
 
-export const lang = {
-    english: "en-US",
-    spanish_ES: "es-ES",
-    spanish_MX: "es-MX",
-    portuguese: "pt-BR",
-};
-
-interface ILanguage {
+interface IData {
     description: string;
     value: string;
 }
 
-//interface IOrder extends ILanguage {}
-
-export const languagesApi: Array<ILanguage> = [
+export const languagesApi: Array<IData> = [
     {
         description: "English",
         value: "en-US",
@@ -58,7 +49,7 @@ export const languagesApi: Array<ILanguage> = [
     },
 ];
 
-export const orderItems: Array<ILanguage> = [
+export const orderItems: Array<IData> = [
     {
         description: "A-Z",
         value: "ASC",
