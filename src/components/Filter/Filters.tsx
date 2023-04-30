@@ -7,6 +7,7 @@ import {
 	changeOrder,
 } from "../../store/filters/filtersSlice";
 import { useFormInput } from "../../hooks/useFormInput";
+import { SelectLanguage, SelectLanguageValorant } from "../Forms/SelectForm";
 
 interface OrderASC {
 	asc: string;
@@ -70,16 +71,20 @@ const FiltersComponent = () => {
 	};
 
 	return (
-		<>
-			<h4>Filters</h4>
-			<div>
+		<div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-5 tw-mt-7 tw-p-5 sm:tw-mt-12 sm:tw-p-6 tw-text-dark-500 sm:tw-rounded-md tw-bg-gray-200">
+			<div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-4 sm:tw-col-span-2 tw-items-center">
 				<label htmlFor="displayName">Name</label>
+				
 				<input
 					type="text"
 					name="displayName"
 					id="displayName"
+					className="tw-col-span-3 tw-p-4 tw-border tw-border-gray-400 tw-text-gray-600 tw-ring-0 tw-text-sm"
 					{...displayNameInput.inputProps}
 				/>
+				
+			</div>
+			<div className="">
 				<button type="button" onClick={clickSearchDisplayNameHandler}>
 					Buscar
 				</button>
@@ -87,6 +92,7 @@ const FiltersComponent = () => {
 					Limpiar
 				</button>
 			</div>
+			{/*
 			<div>
 				<label htmlFor="order">Order</label>
 				<select name="order" defaultValue={order.asc} onChange={changeSelect}>
@@ -94,12 +100,19 @@ const FiltersComponent = () => {
 					<option value={order.dec}>{order.dec}</option>
 				</select>
 			</div>
+			*/}
 
-			<div>
+			<div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-3 sm:tw-col-span-2 tw-items-center">
 				<label htmlFor="language">Languages</label>
+				<SelectLanguageValorant
+					elements={languagesApi}
+					className="sm:tw-mt-0 sm:tw-col-span-2"
+				/>
+				{/*
+				<SelectLanguage elements={languagesApi} className="tw-mt-2 sm:tw-mt-0 sm:tw-col-span-2" />
 				<select
 					name="language"
-					defaultValue={order.asc}
+					className="tw-col-span-3 tw-ml-3 tw-rounded-md tw-border-0 tw-p-1.5 tw-text-gray-600 tw-shadow-sm tw-ring-1 focus:tw-ring-2 focus:tw-ring-red tw-text-sm before:tw-ring-red"
 					onChange={changeSelect}
 				>
 					{languagesApi.map((l, i) => (
@@ -108,8 +121,9 @@ const FiltersComponent = () => {
 						</option>
 					))}
 				</select>
+					*/}
 			</div>
-		</>
+		</div>
 	);
 };
 

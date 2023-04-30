@@ -38,6 +38,18 @@ const dataSlice = createSlice({
 
             state.data = dataUpdate;
         },
+        orderData : (state, action) => {
+            state.data = state.data.sort(function (a, b) {
+                if (a.displayName > b.displayName) {
+                    return 1;
+                }
+                if (a.displayName < b.displayName) {
+                    return -1;
+                }
+                // a must be equal to b
+                return 0;
+            });
+        }
     },
 });
 

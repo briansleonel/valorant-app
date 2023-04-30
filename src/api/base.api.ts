@@ -9,7 +9,7 @@ export const ENDPOINTS_API = {
     weapons: "weapons",
 };
 
-interface IData {
+export interface IData {
     description: string;
     value: string;
 }
