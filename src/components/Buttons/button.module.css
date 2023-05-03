@@ -1,0 +1,114 @@
+.button-main {
+    display: block;
+    padding: .7rem;
+    position: absolute;
+    width: 28.8em;
+    opacity: 1;
+    transition: opacity .7s ease-out .2s;
+    border: 0;
+    cursor: pointer;
+    text-align: center;
+    background: none;
+}
+
+.button-main::before {
+    content: "";
+    display: block;
+    height: calc(50% - 0.7rem);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    border: 1px solid hsla(38, 22%, 90%, 0.5);
+    border-bottom: 0;
+}
+
+.button-main::after {
+    content: "";
+    display: block;
+    height: calc(50% - 0.7rem);
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border: 1px solid hsla(38, 22%, 90%, 0.5);
+    border-top: 0;
+}
+
+.button-span-container {
+    overflow: hidden;
+    position: relative;
+    display: block;
+}
+
+.button-span-container::before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: calc(100% - 0.3rem);
+    width: 100%;
+    background-color: #ff4655;
+    left: 0;
+    bottom: 0;
+}
+
+.button-span-container::after {
+    content: "";
+    position: absolute;
+    display: block;
+    background-color: #ff4655;
+    height: 0.3rem;
+    width: calc(100% - 0.3rem);
+    top: 0;
+    left: 0.3rem;
+}
+
+.span-hover {
+    display: block;
+    background-color: #0f1923;
+    height: 100%;
+    width: 120%;
+    position: absolute;               
+    top: 0%;
+    left: -5%;
+    z-index: 1;
+
+    transform: translateX(-100%) skew(-10deg);
+    transition: transform 1s ease-out;
+}
+
+.span-content {
+    position: relative;
+    display: block;
+    padding: 1.9rem 3rem;
+    background-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 1;
+}
+
+.span-content::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    background-color: #0f1923;
+    height: 0.4rem;
+    width: 0.4rem;
+}
+
+.span-content::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background-color: #0f1923;
+    height: 0.6rem;
+    width: 0.6rem;
+}
+
+.button-main:hover .span-hover {
+    transform: translateX(0%)
+}

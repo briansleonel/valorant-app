@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../../components/layout/Layout";
 import ErrorPage from "../../pages/ErrorPage";
-import Home from "../../pages/Home";
+import Home from "../../pages/Home/Home";
 import GameInfo from "../../pages/GameInfo";
 import AgentsPage from "../../pages/Agents";
 import MapsPage from "../../pages/Maps";

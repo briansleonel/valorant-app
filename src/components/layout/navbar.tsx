@@ -6,6 +6,8 @@ import { DisclousureLink, DropdownsLinks } from "./DropdownLinks";
 import { classNames } from "../../utils/className";
 import { navigationApp } from "../../config/navigation/navigation";
 
+import logoValorant from "../../assets/img/valorant-logo.png";
+
 export const NavBar = () => {
 	return (
 		<Disclosure
@@ -36,19 +38,20 @@ export const NavBar = () => {
 
 							<div className="tw-flex tw-flex-1 tw-items-center tw-justify-center  sm:tw-items-stretch sm:tw-justify-center">
 								{/** -------- Logo ---------- */}
-								<div className="tw-flex tw-flex-shrink-0 tw-items-center">
+								<div className="tw-flex tw-flex-shrink-0 tw-items-center tw-justify-center">
 									{/** ------- Mobile Logo --------- */}
 									<img
-										className="tw-block tw-h-12 tw-w-auto lg:tw-hidden tw-m-auto"
-										src="https://static.vecteezy.com/system/resources/previews/019/763/186/original/valorant-logo-transparent-free-png.png"
+										className="tw-block tw-h-9 tw-w-auto lg:tw-hidden tw-m-auto"
+										src={logoValorant}
 										alt="Valorant Logo"
 									/>
 									{/** -------- Desktop Logo ---------- */}
 									<img
-										className="tw-hidden tw-h-12 tw-w-auto lg:tw-block"
-										src="https://static.vecteezy.com/system/resources/previews/019/763/186/original/valorant-logo-transparent-free-png.png"
+										className="tw-hidden tw-h-9 tw-w-auto lg:tw-block"
+										src={logoValorant}
 										alt="Valorant Logo"
 									/>
+									<span className="font-valorant tw-ml-4 tw-text-xl tw-text-center">vALORaNT-AAP</span>
 								</div>
 
 								{/** -------- Desktop Links ------------- */}
@@ -83,7 +86,7 @@ export const NavBar = () => {
 						<div className="tw-space-y-1 tw-px-2 tw-pb-3 tw-pt-2">
 							{navigationApp.map((item) =>
 								item.href === "/gameinfo" ? (
-									<DisclousureLink link={item} />
+									<Disclosure.Button as={DisclousureLink} link={item} />
 								) : (
 									<Disclosure.Button
 										as={Link}

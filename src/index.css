@@ -14,13 +14,46 @@
         url("./assets/fonts/Valorant/ValorantFont.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "dinnextw05-light";
+    src: local("dinnextw05-light"),
+        url("./assets/fonts/DinNextW05/dinnextw05-light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "dinnextw05-medium";
+    src: local("dinnextw05-medium"),
+        url("./assets/fonts/DinNextW05/dinnextw05-medium.ttf")
+            format("truetype");
+}
+
+@font-face {
+    font-family: "dinnextw05-regular";
+    src: local("dinnextw05-regular"),
+        url("./assets/fonts/DinNextW05/dinnextw05-regular.ttf")
+            format("truetype");
+}
+
+@font-face {
+    font-family: "dinnextw05-bold";
+    src: local("dinnextw05-bold"),
+        url("./assets/fonts/DinNextW05/dinnextw05-bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "dinnextw1g";
+    src: local("dinnextw1g"),
+        url("./assets/fonts/DinNextW1G/dinnextw1g.otf") format("opentype");
+}
+
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: "dinnextw1g", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
+    background-color: rgb(236 232 225);
 }
 
 .font-tungsten-bold {
@@ -29,6 +62,26 @@ body {
 
 .font-valorant {
     font-family: "ValorantFont", sans-serif;
+}
+
+.font-dinnextw05-light {
+    font-family: "dinnextw05-light", sans-serif;
+}
+
+.font-dinnextw05-medium {
+    font-family: "dinnextw05-medium", sans-serif;
+}
+
+.font-dinnextw05-regular {
+    font-family: "dinnextw05-regular", sans-serif;
+}
+
+.font-dinnextw05-bold {
+    font-family: "dinnextw05-bold", sans-serif;
+}
+
+.font-dinnextw1g {
+    font-family: "dinnextw1g", sans-serif;
 }
 
 input {
