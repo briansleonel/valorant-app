@@ -9,6 +9,11 @@ const AgentsPage = (): JSX.Element => {
 
 	return (
 		<>
+			<h6>Conoce al equipo</h6>
+			<p>
+				Descubre más formas de plantar la spike y dominar a tus enemigos con
+				estos guerrilleros, estrategas y cazadores de diferentes estilos.
+			</p>
 			{error ? (
 				<h4>Hubo un error</h4>
 			) : isLoading ? (

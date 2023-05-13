@@ -10,7 +10,7 @@ interface FiltersState {
 const initialState: FiltersState = {
     displayName: "",
     order: "A-Z",
-    language: "en-US",
+    language: "es-MX",
 };
 
 export const filtersSlice = createSlice({

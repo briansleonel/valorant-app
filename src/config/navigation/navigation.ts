@@ -2,30 +2,30 @@ import { ILink } from "../../types/navbar";
 
 export const navigationApp: Array<ILink> = [
 	{
-		name: "Home",
+		name: "Inicio",
 		href: "/",
 		current: true,
 		subLinks: [],
 	},
 	{
-		name: "Game Information",
-		href: "/gameinfo",
+		name: "Información del juego",
+		href: "$gameinfo",
 		current: false,
 		subLinks: [
 			{
-				name: "Agents",
+				name: "Agentes",
 				href: "/agents",
 				current: false,
 				subLinks: [],
 			},
 			{
-				name: "Game Modes",
+				name: "Modos de Juego",
 				href: "/gamemodes",
 				current: false,
 				subLinks: [],
 			},
 			{
-				name: "Maps",
+				name: "Mapas",
 				href: "/maps",
 				current: false,
 				subLinks: [],
@@ -33,7 +33,7 @@ export const navigationApp: Array<ILink> = [
 		],
 	},
 	{
-		name: "About",
+		name: "Acerca de",
 		href: "/about",
 		current: false,
 		subLinks: [],

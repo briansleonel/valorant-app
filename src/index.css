@@ -57,7 +57,7 @@ body {
 }
 
 .font-tungsten-bold {
-    font-family: "TungstenBold", sans-serif;
+    font-family: "TungstenBold", arial, georgia, sans-serif;
 }
 
 .font-valorant {
@@ -65,23 +65,23 @@ body {
 }
 
 .font-dinnextw05-light {
-    font-family: "dinnextw05-light", sans-serif;
+    font-family: "dinnextw05-light", arial, georgia, sans-serif;
 }
 
 .font-dinnextw05-medium {
-    font-family: "dinnextw05-medium", sans-serif;
+    font-family: "dinnextw05-medium", arial, georgia, sans-serif;
 }
 
 .font-dinnextw05-regular {
-    font-family: "dinnextw05-regular", sans-serif;
+    font-family: "dinnextw05-regular", arial, georgia, sans-serif;
 }
 
 .font-dinnextw05-bold {
-    font-family: "dinnextw05-bold", sans-serif;
+    font-family: "dinnextw05-bold", arial, georgia, sans-serif;
 }
 
 .font-dinnextw1g {
-    font-family: "dinnextw1g", sans-serif;
+    font-family: "dinnextw1g", arial, georgia, sans-serif;
 }
 
 input {

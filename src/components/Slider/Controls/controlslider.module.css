@@ -1,0 +1,71 @@
+.containerControlSlider {
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.containerControlSlider li {
+    margin-left: 0;
+    cursor: pointer;
+    margin: 0 0.1rem;
+    padding: 0;
+    display: inline-block;
+    height: 1rem;
+    position: relative;
+    width: 1.7rem;
+}
+
+.containerControlSlider li button {
+    background: transparent;
+        border: none;
+        cursor: pointer;
+        color: transparent;
+        display: block;
+        font-size: 0;
+        height: 100%;
+        line-height: 0;
+        outline: none;
+        width: 100%;
+}
+
+.containerControlSlider li button::before, .containerControlSlider li button::after {
+    content: "";
+    display: block;
+    height: 0.5rem;
+    position: absolute;
+    width: 100%;
+} 
+
+.containerControlSlider li button::before {
+    border: 1px solid #8b978f;
+}
+
+.containerControlSlider li button::after {
+    transition: background-color .3s;
+}
+
+.containerControlSlider li:hover button::after {
+    background-color: #ff4655;
+}
+
+.controlActive::before {
+    border: none;
+}
+
+.controlActive::after {
+    background-color: #ff4655;
+}
+
+@media only screen and (min-width: 640px) {
+    .containerControlSlider li {
+        margin-left: 0;
+        cursor: pointer;
+        margin: 0 0.2rem;
+        padding: 0;
+        display: inline-block;
+        height: 1.5rem;
+        position: relative;
+        width: 2rem;
+    }
+}

@@ -20,6 +20,7 @@ module.exports = {
                 550: "#272c34ff",
                 600: "#27272fff",
             },
+            greenInfo: "#8b978f",
         },
     },
     plugins: [],

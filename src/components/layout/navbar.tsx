@@ -12,7 +12,7 @@ export const NavBar = () => {
 	return (
 		<Disclosure
 			as="nav"
-			className="tw-bg-black tw-text-gray-200 tw-sticky tw-top-0 tw-z-50"
+			className="tw-bg-black tw-w-full tw-text-gray-200 tw-sticky tw-top-0 tw-z-50"
 		>
 			{({ open }) => (
 				<>
@@ -51,14 +51,14 @@ export const NavBar = () => {
 										src={logoValorant}
 										alt="Valorant Logo"
 									/>
-									<span className="font-valorant tw-ml-4 tw-text-xl tw-text-center">vALORaNT-AAP</span>
+									<span className="font-valorant tw-ml-4 tw-text-xl tw-text-center tw-leading-none">vALORaNT-AAP</span>
 								</div>
 
 								{/** -------- Desktop Links ------------- */}
 								<div className="tw-flex tw-justify-center tw-items-center sm:tw-w-full">
 									<div className="tw-hidden sm:tw-ml-6 sm:tw-block tw-space-x-20">
 										{navigationApp.map((item) =>
-											item.href === "/gameinfo" ? (
+											item.href === "$gameinfo" ? (
 												<DropdownsLinks link={item} />
 											) : (
 												<Link
@@ -85,7 +85,7 @@ export const NavBar = () => {
 					<Disclosure.Panel className="sm:tw-hidden">
 						<div className="tw-space-y-1 tw-px-2 tw-pb-3 tw-pt-2">
 							{navigationApp.map((item) =>
-								item.href === "/gameinfo" ? (
+								item.href === "$gameinfo" ? (
 									<Disclosure.Button as={DisclousureLink} link={item} />
 								) : (
 									<Disclosure.Button

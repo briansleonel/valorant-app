@@ -1,0 +1,25 @@
+.index {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg) translateX(-100%) translateY(-19%);
+    transform-origin: left top;
+    font-size: 1.1em;
+    line-height: 1.25;
+    font-weight: 600;
+}
+
+.title {
+    display: block;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    line-height: 1.25;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.coordinate {
+    display: block;
+    margin-top: 1em;
+    font-family: "dinnextw1g", arial, georgia, sans-serif;
+}

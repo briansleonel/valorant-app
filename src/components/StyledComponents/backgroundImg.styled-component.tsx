@@ -1,15 +1,19 @@
-/* NO se esta usando */
-/*
-.bg-home {
-    background: url("/src/assets/img/valorant-3.jpg") center no-repeat fixed;
+import styled from "styled-components";
+
+interface IProsBGImage {
+    img : string
+}
+
+export const BackgroundImgMain = styled.section<IProsBGImage>`
+    background: url(${p => p.img}) center no-repeat fixed;
     background-size: cover;
     width: 100vw;
     height: 100%;
 
     position: relative;
-}
+`
 
-.bg-home-container {
+export const BackgroundImgContentFlex = styled.div`
     position: absolute;
     inset: 0;
     display: flex;
@@ -19,5 +23,4 @@
     background: rgba(0, 0, 0, 0.5);
     color: white;
     padding: auto;
-}
-*/
+`

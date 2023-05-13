@@ -21,7 +21,7 @@ export const DropdownsLinks = ({ link }: Props) => {
 		<Menu as="div" className="tw-relative tw-inline-block">
 			<div>
 				<Menu.Button className="tw-inline-flex tw-w-full tw-justify-center tw-gap-x-1.5 tw-rounded-md tw-bg-black tw-px-3 tw-py-2 tw-text-gray-200 tw-shadow-sm tw-ring-1 tw-ring-inset tw-ring-black active:tw-bg-black">
-					Game Information
+					{link.name}
 					<ChevronDownIcon
 						className="-tw-mr-1 tw-h-5 tw-w-5 tw-text-gray-300"
 						aria-hidden="true"
@@ -44,7 +44,7 @@ export const DropdownsLinks = ({ link }: Props) => {
 							<Menu.Item key={item.name}>
 								{({ active }) => (
 									<Link
-										to={`${link.href}${item.href}`}
+										to={item.href}
 										key={link.name}
 										className={classNames(
 											active
@@ -95,7 +95,7 @@ export const DisclousureLink = ({ link }: Props) => {
 								<Disclosure.Button
 									as={Link}
 									key={item.name}
-									to={`${link.href}${item.href}`}
+									to={item.href}
 									className="tw-text-gray-300 tw-block tw-rounded-md tw-px-5 tw-py-2 tw-font-medium"
 								>
 									<div className="tw-inline-flex ">

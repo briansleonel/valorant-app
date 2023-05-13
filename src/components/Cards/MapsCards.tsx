@@ -11,7 +11,7 @@ interface PropsMapCard {
 
 const MapsCards = ({ data }: Props): JSX.Element => {
 	return (
-		<section>
+		<>
 			{data !== null && data.length > 0
 				? data.map((element) => {
 						return (
@@ -21,7 +21,7 @@ const MapsCards = ({ data }: Props): JSX.Element => {
 						);
 				  })
 				: "No data"}
-		</section>
+		</>
 	);
 };
 

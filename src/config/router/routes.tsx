@@ -28,14 +28,14 @@ const routes = [
 						element: <AgentsPage />,
 					},
 					{
-						path: "maps",
-						element: <MapsPage />,
-					},
-					{
 						path: "gamemodes",
 						element: <GamemodesPage />,
 					},
 				],
+			},
+			{
+				path: "maps",
+				element: <MapsPage />,
 			},
 			{
 				path: "about",

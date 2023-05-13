@@ -3,7 +3,7 @@ import {
 	ButtonSpanContainer,
 	ButtonSpanContent,
 	ButtonSpanHover,
-} from "../StyledComponents/ButtonMain-SC";
+} from "./buttonValorant.styled-component";
 
 interface IProps {
 	href: string;
@@ -21,12 +21,3 @@ export const ButtonValorant = ({ href, content, className }: IProps) => {
 		</ButtonContainer>
 	);
 };
-
-/*
-	<a className={classNames(styles["button-main"], className)} href={href}>
-			<div className={styles["button-span-container"]}>
-				<span className={styles["span-hover"]}> </span>
-				<span className={styles["span-content"]}>{content}</span>
-			</div>
-	</a>
-*/
