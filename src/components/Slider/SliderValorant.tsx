@@ -51,7 +51,7 @@ export const SliderValorant = ({ data, setMap, setIndex }: IProps) => {
 
 			<div ref={slidesRef} className={styles["slides"]}>
 				{data.map((e, i) => (
-					<ImageSlider img={e.splash} ref={imgRef} active={activeIndex === i} />
+					<ImageSlider key={e.uuid} img={e.splash} ref={imgRef} active={activeIndex === i} />
 				))}
 			</div>
 

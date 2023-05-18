@@ -42,7 +42,7 @@ export function SelectLanguage({ elements, className }: Props) {
 						<Listbox.Button className="tw-relative tw-w-full tw-cursor-default tw-rounded-md tw-bg-gray-200 tw-py-1.5 tw-pl-1 tw-pr-10 tw-text-left tw-text-gray-600 tw-shadow-sm tw-ring-2 tw-ring-inset tw-ring-gray-300 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-red sm:tw-text-sm sm:tw-leading-6">
 							<span className="tw-flex tw-items-center">
 								<span className="tw-ml-3 tw-block tw-truncate">
-									{selected.description}
+									{selected.label}
 								</span>
 							</span>
 							<span className="tw-pointer-events-none tw-absolute tw-inset-y-0 tw-right-0 tw-ml-3 tw-flex tw-items-center tw-pr-2">
@@ -90,7 +90,7 @@ export function SelectLanguage({ elements, className }: Props) {
 															"tw-ml-3 tw-block tw-truncate",
 														)}
 													>
-														{e.description}
+														{e.label}
 													</span>
 												</div>
 
@@ -147,7 +147,7 @@ export function SelectLanguageValorant({ elements, className }: Props) {
 						<Listbox.Button className="tw-relative tw-w-full tw-cursor-default tw-bg-gray-200 tw-p-4 tw-pr-10 tw-text-left tw-border tw-border-gray-400 tw-text-gray-600 focus:tw-outline-none focus:tw-ring-0 sm:tw-text-sm">
 							<span className="tw-flex tw-items-center">
 								<span className="tw-ml-3 tw-block tw-truncate">
-									{selected.description}
+									{selected.label}
 								</span>
 							</span>
 							<span className="tw-pointer-events-none tw-absolute tw-inset-y-0 tw-right-0 tw-ml-3 tw-flex tw-items-center tw-pr-2">
@@ -198,7 +198,7 @@ export function SelectLanguageValorant({ elements, className }: Props) {
 															"tw-ml-3 tw-block tw-truncate",
 														)}
 													>
-														{e.description}
+														{e.label}
 													</span>
 												</div>
 

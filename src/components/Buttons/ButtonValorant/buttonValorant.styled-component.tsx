@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colorsApp } from "../../../config/styles/colors";
 
 interface IPropsButtonContainer {
     width? : string
@@ -15,7 +16,7 @@ export const ButtonSpanContainer = styled.div`
 		display: block;
 		height: calc(100% - 0.3rem);
 		width: 100%;
-		background-color: #ff4655;
+		background-color: ${colorsApp.red};
 		left: 0;
 		bottom: 0;
 	}
@@ -24,7 +25,7 @@ export const ButtonSpanContainer = styled.div`
 		content: "";
 		position: absolute;
 		display: block;
-		background-color: #ff4655;
+		background-color: ${colorsApp.red};
 		height: 0.3rem;
 		width: calc(100% - 0.3rem);
 		top: 0;
@@ -34,7 +35,7 @@ export const ButtonSpanContainer = styled.div`
 
 export const ButtonSpanHover = styled.span`
 	display: block;
-    background-color: #0f1923;
+    background-color: ${colorsApp.blue};
     height: 100%;
     width: 120%;
     position: absolute;               
@@ -61,7 +62,7 @@ export const ButtonSpanContent = styled.span`
 		left: 0;
 		top: 0;
 		display: block;
-		background-color: #0f1923;
+		background-color: ${colorsApp.blue};
 		height: 0.4rem;
 		width: 0.4rem;
 	}
@@ -95,23 +96,25 @@ export const ButtonContainer = styled.a<IPropsButtonContainer>`
 	&::before {
 		content: "";
 		display: block;
-		height: calc(50% - 0.7rem);
+		height: calc(50% - 0.5rem);
 		position: absolute;
 		width: 100%;
 		left: 0;
 		top: 0;
-		border: 1px solid hsla(38, 22%, 90%, 0.5);
+		border: 1px solid ${colorsApp.gray[300]}; 
+		opacity: .5;
 	 	border-bottom: 0;
 	}
 	&::after {
 		content: "";
 		display: block;
-		height: calc(50% - 0.7rem);
+		height: calc(50% - 0.5rem);
 		position: absolute;
 		width: 100%;
 		left: 0;
 		bottom: 0;
-		border: 1px solid hsla(38, 22%, 90%, 0.5);
+		border: 1px solid ${colorsApp.gray[300]}; 
+		opacity: .5;
 		border-top: 0;
 	}
 
@@ -122,7 +125,7 @@ export const ButtonContainer = styled.a<IPropsButtonContainer>`
 			}
 			${ButtonSpanContent} {
 				&::after {
-					background-color: #f9f9f9;
+					background-color: ${colorsApp.gray[200]};
 				}
 			}
 		}

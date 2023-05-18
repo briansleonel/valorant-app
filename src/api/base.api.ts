@@ -10,52 +10,52 @@ export const ENDPOINTS_API = {
 };
 
 export interface IData {
-    description: string;
+    label: string;
     value: string;
 }
 
 export const languagesApi: Array<IData> = [
     {
-        description: "English",
-        value: "en-US",
-    },
-    {
-        description: "Spanish MX",
+        label: "Español MX",
         value: "es-MX",
     },
     {
-        description: "Spanish ES",
+        label: "Español ES",
         value: "es-ES",
     },
     {
-        description: "French",
+        label: "Inglés",
+        value: "en-US",
+    },
+    {
+        label: "Francés",
         value: "fr-FR",
     },
     {
-        description: "Italian",
+        label: "Italiano",
         value: "it-IT",
     },
     {
-        description: "Deutsch",
+        label: "Alemán",
         value: "de-DE",
     },
     {
-        description: "Korean",
+        label: "Coreano",
         value: "ko-KR",
     },
     {
-        description: "Portuguese",
+        label: "Portugués",
         value: "pt-BR",
     },
 ];
 
 export const orderItems: Array<IData> = [
     {
-        description: "A-Z",
+        label: "A-Z",
         value: "ASC",
     },
     {
-        description: "Z-A",
+        label: "Z-A",
         value: "DEC",
     },
 ];

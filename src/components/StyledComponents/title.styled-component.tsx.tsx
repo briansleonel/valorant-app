@@ -2,19 +2,30 @@ import styled from "styled-components";
 import { devices } from "../../config/styles/breakpoint";
 import { colorsApp } from "../../config/styles/colors";
 
-export const Title = styled.h2`
-    font-family: "TungstenBold", arial,georgia,sans-serif;
-    font-size: 5em;
+interface IProps {
+    color?: string
+}
+
+export const Title = styled.h2<IProps>`
+    font-family: "TungstenBold", arial, georgia, sans-serif;
+    font-size: 6em;
     text-transform: uppercase;
     display: inline-block;
     width: 100%;
-    line-height: .86;
+    line-height: 0.86;
+    color: ${p => p.color ? p.color : colorsApp.blue};
     z-index: 2;
 
+    @media only screen and (${devices.md}) {
+        font-size: 7.5em;
+    }
+`;
+
+export const TitleEffects = styled(Title)`
     ::before {
         content: "";
         position: absolute;
-        right: .2em;
+        right: 0.2em;
         border-top: 1px solid ${colorsApp.gray[400]};
         width: 40%;
     }
@@ -23,16 +34,14 @@ export const Title = styled.h2`
         content: "";
         right: 0;
         background-color: ${colorsApp.red};
-        width: .06em;
-        height: .06em;
+        width: 0.06em;
+        height: 0.06em;
         position: absolute;
     }
 
     @media only screen and (${devices.md}) {
-        font-size: 7.5em;
-
         ::before {
-            right: .5em;
+            right: 0.5em;
             width: 60%;
         }
     }
