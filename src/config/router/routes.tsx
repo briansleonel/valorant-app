@@ -7,6 +7,7 @@ import AgentsPage from "../../pages/Agents/Agents";
 import MapsPage from "../../pages/Maps";
 import GamemodesPage from "../../pages/GamemodesPage";
 import About from "../../pages/About";
+import Agent from "../../pages/Agents/Agent";
 
 const routes = [
     {
@@ -20,22 +21,12 @@ const routes = [
                 index: true,
             },
             {
-                path: "gameinfo",
-                element: <GameInfo />,
-                children: [
-                    {
-                        path: "agents",
-                        element: <AgentsPage />,
-                    },
-                    {
-                        path: "gamemodes",
-                        element: <GamemodesPage />,
-                    },
-                ],
-            },
-            {
                 path: "agents",
                 element: <AgentsPage />,
+            },
+            {
+                path: "agents/:agentId",
+                element: <Agent />,
             },
             {
                 path: "maps",

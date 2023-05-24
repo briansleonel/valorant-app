@@ -3,11 +3,12 @@
     margin: 0 auto;
     position: relative;
     user-select: none;
+    z-index: 20;
 }
 
 .dropdown .dropdownBtn {
     padding: 1em 1.5em;
-    background: transparent;
+    background: #ece8e1;
     border: 0;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
     color: #0f1923;

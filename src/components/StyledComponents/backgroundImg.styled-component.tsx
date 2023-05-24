@@ -28,6 +28,7 @@ export const BackgroundImgContentFlex = styled.div`
 `;
 
 export const BackgroundContent = styled.div`
+    /*
     background-color: ${colorsApp.blue};
     //max-height: 30.5rem;
     max-height: 55.5rem;
@@ -42,9 +43,35 @@ export const BackgroundContent = styled.div`
         //max-height: 64.5rem;
         max-height: fit-content;
     }
+    */
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    min-height: 28em;
+
+    background-position: 50%;
+    background-size: cover;
+    object-position: center;
+    object-fit: cover;
+
+    @media only screen and (${devices.md}) {
+        min-height: 30em;
+    }
 `;
 
 export const BackgroundImg = styled.span<IProps>`
+    background-image: url(${(p) => p.img});
+    background-position: top;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*
     background-image: url(${(p) => p.img});
     background-position: 50%;
     background-size: cover;
@@ -57,4 +84,14 @@ export const BackgroundImg = styled.span<IProps>`
     //opacity: 0;
     top: 0;
     left: 0;
+    */
+`;
+
+export const BackgroundContentAgent = styled(BackgroundContent)`
+    max-height: 70rem;
+    height: 20em;
+
+    @media only screen and (${devices.md}) {
+        height: 45em;
+    }
 `;

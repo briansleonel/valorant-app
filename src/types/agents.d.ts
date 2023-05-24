@@ -22,7 +22,7 @@ export interface IAgentApi {
     voiceLine: VoiceLineApi;
 }
 
-interface Abilities {
+export interface Abilities {
     slot: string;
     displayName: string;
     description: string;

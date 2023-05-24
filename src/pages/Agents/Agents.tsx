@@ -4,14 +4,24 @@ import { useData } from "../../hooks/useData";
 import FiltersComponent from "../../components/Filter/Filters";
 
 import imageBackground from "../../assets/img/agents-background.jpg";
-import imageMain from "../../assets/img/agents-group.png";
+import image from "../../assets/img/agents-group.png";
 
-import { Title } from "../../components/StyledComponents/title.styled-component.tsx";
+import {
+    Paragraph,
+    Subtitle,
+    Title,
+} from "../../components/StyledComponents/title.styled-component.tsx";
 import { colorsApp } from "../../config/styles/colors";
-
-import styles from "./agents.module.css";
-import { ContainerRelative } from "../../components/StyledComponents/layout.styled-component";
+import {
+    ContainerRelative,
+    SubContainerMinHeight,
+} from "../../components/StyledComponents/layout.styled-component";
 import { BackgroundImage } from "../../components/BackgroundImage/BackgroundImage";
+import {
+    ContainerInfo,
+    Wrapper,
+} from "../../components/Agents/Elements";
+import { ImageMain } from "../../components/Agents/ImageAgent/ImageMain";
 
 const AgentsPage = (): JSX.Element => {
     const { error, isLoading, viewData } = useData<IAgentApi>({
@@ -22,44 +32,34 @@ const AgentsPage = (): JSX.Element => {
         <>
             <ContainerRelative color={colorsApp.gray[400]}>
                 <BackgroundImage img={imageBackground} />
-                <div className={styles.sectionWrapper}>
-                    <Title
-                        color={colorsApp.gray[300]}
-                        className="tw-left-0 tw-absolute tw-top-8"
-                    >
-                        Agentes
-                    </Title>
+                <SubContainerMinHeight>
+                    <Wrapper>
+                        <Title color={colorsApp.gray[300]}>Agentes</Title>
 
-                    <picture className={styles.containerImg}>
-                        <img
-                            src={imageMain}
-                            alt="Agents Group"
-                            className="tw-w-96"
-                        />
-                    </picture>
+                        <ImageMain img={image} displayName="Agents >Group" />
 
-                    <div className={styles.containerTitle}>
-                        <h6 className=" tw-text-base tw-text-gray-300 tw-uppercase tw-mt-28 ">
-                            // Conoce al equipo
-                        </h6>
-                        <p className="tw-text-base tw-text-gray-300 tw-mt-6">
-                            Descubre más formas de plantar la spike y dominar a
-                            tus enemigos con estos guerrilleros, estrategas y
-                            cazadores de diferentes estilos.
-                        </p>
-                    </div>
-                </div>
+                        <ContainerInfo>
+                            <Subtitle>// Conoce al equipo</Subtitle>
+                            <Paragraph border={true} className="tw-mt-6">
+                                Descubre más formas de plantar la spike y
+                                dominar a tus enemigos con estos guerrilleros,
+                                estrategas y cazadores de diferentes estilos.
+                            </Paragraph>
+                        </ContainerInfo>
+                    </Wrapper>
+                </SubContainerMinHeight>
             </ContainerRelative>
+
             <ContainerRelative>
                 <div className="tw-h-auto tw-w-full tw-relative tw-mt-8 sm:tw-hidden tw-text-lg tw-p-4">
-                    <h6 className=" tw-text-gray-500 tw-uppercase">
+                    <Subtitle color={colorsApp.gray[500]}>
                         // Conoce al equipo
-                    </h6>
-                    <p className="tw-text-gray-400 tw-mt-2">
+                    </Subtitle>
+                    <Paragraph className="tw-mt-4" color={colorsApp.gray[400]}>
                         Descubre más formas de plantar la spike y dominar a tus
                         enemigos con estos guerrilleros, estrategas y cazadores
                         de diferentes estilos.
-                    </p>
+                    </Paragraph>
                 </div>
                 <FiltersComponent />
             </ContainerRelative>
@@ -71,7 +71,7 @@ const AgentsPage = (): JSX.Element => {
                     <h1>Loading...</h1>
                 ) : (
                     <AgentCards data={viewData} />
-				)}
+                )}
             </ContainerRelative>
         </>
     );

@@ -22,10 +22,10 @@ export const Container = styled.section<IProps>`
 
 export const ContainerRelative = styled.section`
     padding: 0 5%;
-    overflow: visible;
+    //overflow: visible;
     position: relative;
     width: 100%;
-    height: auto;
+    //height: auto;
 
     display: flex;
     flex-direction: column;
@@ -53,6 +53,22 @@ export const ContainerRelative = styled.section`
         }
     }
 `;
+
+export const SubContainer = styled.div`
+    margin: 5% 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: fit-content;
+`
+
+export const SubContainerMinHeight = styled.div`
+    margin: 5% 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 30rem;
+`
 
 export const Content = styled.div<IProps>`
     margin: 0 auto;
