@@ -17,11 +17,9 @@ import {
     SubContainerMinHeight,
 } from "../../components/StyledComponents/layout.styled-component";
 import { BackgroundImage } from "../../components/BackgroundImage/BackgroundImage";
-import {
-    ContainerInfo,
-    Wrapper,
-} from "../../components/Agents/Elements";
+import { ContainerInfo, Wrapper } from "../../components/Agents/Elements";
 import { ImageMain } from "../../components/Agents/ImageAgent/ImageMain";
+import { Loader } from "../../components/Loader/Loader";
 
 const AgentsPage = (): JSX.Element => {
     const { error, isLoading, viewData } = useData<IAgentApi>({
@@ -30,49 +28,63 @@ const AgentsPage = (): JSX.Element => {
 
     return (
         <>
-            <ContainerRelative color={colorsApp.gray[400]}>
-                <BackgroundImage img={imageBackground} />
-                <SubContainerMinHeight>
-                    <Wrapper>
-                        <Title color={colorsApp.gray[300]}>Agentes</Title>
+            {error ? (
+                <h4>Hubo un error</h4>
+            ) : isLoading ? (
+                <Loader />
+            ) : (
+                <>
+                    <ContainerRelative color={colorsApp.gray[400]}>
+                        <BackgroundImage img={imageBackground} />
+                        <SubContainerMinHeight>
+                            <Wrapper>
+                                <Title color={colorsApp.gray[300]}>
+                                    Agentes
+                                </Title>
 
-                        <ImageMain img={image} displayName="Agents >Group" />
+                                <ImageMain
+                                    img={image}
+                                    displayName="Agents >Group"
+                                />
 
-                        <ContainerInfo>
-                            <Subtitle>// Conoce al equipo</Subtitle>
-                            <Paragraph border={true} className="tw-mt-6">
+                                <ContainerInfo>
+                                    <Subtitle>// Conoce al equipo</Subtitle>
+                                    <Paragraph
+                                        border={true}
+                                        className="tw-mt-6"
+                                    >
+                                        Descubre más formas de plantar la spike
+                                        y dominar a tus enemigos con estos
+                                        guerrilleros, estrategas y cazadores de
+                                        diferentes estilos.
+                                    </Paragraph>
+                                </ContainerInfo>
+                            </Wrapper>
+                        </SubContainerMinHeight>
+                    </ContainerRelative>
+
+                    <ContainerRelative>
+                        <div className="tw-h-auto tw-w-full tw-relative tw-mt-8 sm:tw-hidden tw-text-lg tw-p-4">
+                            <Subtitle color={colorsApp.gray[500]}>
+                                // Conoce al equipo
+                            </Subtitle>
+                            <Paragraph
+                                className="tw-mt-4"
+                                color={colorsApp.gray[400]}
+                            >
                                 Descubre más formas de plantar la spike y
                                 dominar a tus enemigos con estos guerrilleros,
                                 estrategas y cazadores de diferentes estilos.
                             </Paragraph>
-                        </ContainerInfo>
-                    </Wrapper>
-                </SubContainerMinHeight>
-            </ContainerRelative>
+                        </div>
+                        <FiltersComponent />
+                    </ContainerRelative>
 
-            <ContainerRelative>
-                <div className="tw-h-auto tw-w-full tw-relative tw-mt-8 sm:tw-hidden tw-text-lg tw-p-4">
-                    <Subtitle color={colorsApp.gray[500]}>
-                        // Conoce al equipo
-                    </Subtitle>
-                    <Paragraph className="tw-mt-4" color={colorsApp.gray[400]}>
-                        Descubre más formas de plantar la spike y dominar a tus
-                        enemigos con estos guerrilleros, estrategas y cazadores
-                        de diferentes estilos.
-                    </Paragraph>
-                </div>
-                <FiltersComponent />
-            </ContainerRelative>
-
-            <ContainerRelative>
-                {error ? (
-                    <h4>Hubo un error</h4>
-                ) : isLoading ? (
-                    <h1>Loading...</h1>
-                ) : (
-                    <AgentCards data={viewData} />
-                )}
-            </ContainerRelative>
+                    <ContainerRelative>
+                        <AgentCards data={viewData} />
+                    </ContainerRelative>
+                </>
+            )}
         </>
     );
 };

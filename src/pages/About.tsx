@@ -1,7 +1,10 @@
+import { Loader } from "../components/Loader/Loader";
+
 const About = () => {
     return (
         <>
-            <h1>About</h1>
+            
+                <Loader />
         </>
     );
 };

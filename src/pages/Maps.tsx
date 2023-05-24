@@ -12,6 +12,7 @@ import {
     TextBackground,
 } from "../components/StyledComponents/layout.styled-component";
 import { CardDataMap } from "../components/Maps/CardDataMap";
+import { Loader } from "../components/Loader/Loader.js";
 
 const MapsPage = (): JSX.Element => {
     const { error, isLoading, viewData } = useData<IMapApi>({
@@ -27,37 +28,41 @@ const MapsPage = (): JSX.Element => {
     }, [viewData]);
 
     return (
-        <ContainerWhitLines>
-            <TextBackground className="font-dinnextw05-bold">
-                <span>We Are</span>
-                <span>VALORANT</span>
-            </TextBackground>
-            <ContentWhitLines>
-                <TitleEffects className="tw-text-blue tw-mt-6 sm:tw-mt-0">
-                    Mapas
-                </TitleEffects>
-                <div className="tw-relative tw-pb-20 sm:tw-pb-0 tw-pr-0 tw-mt-4  md:tw-ml-32 md:tw-mr-20">
-                    <div className="tw-w-full tw-overflow-visible tw-relative">
-                        {error ? (
-                            <h4>Hubo un error</h4>
-                        ) : isLoading ? (
-                            <h1>Loading...</h1>
-                        ) : viewData.length > 0 && map ? (
-                            <>
-                                <SliderValorant
-                                    data={viewData}
-                                    setMap={setMap}
-                                    setIndex={setIndex}
-                                />
-                                <CardDataMap map={map} index={index} />
-                            </>
-                        ) : (
-                            ""
-                        )}
-                    </div>
-                </div>
-            </ContentWhitLines>
-        </ContainerWhitLines>
+        <>
+            {error ? (
+                <h4>Hubo un error</h4>
+            ) : isLoading ? (
+                <Loader />
+            ) : (
+                <ContainerWhitLines>
+                    <TextBackground className="font-dinnextw05-bold">
+                        <span>We Are</span>
+                        <span>VALORANT</span>
+                    </TextBackground>
+                    <ContentWhitLines>
+                        <TitleEffects className="tw-text-blue tw-mt-6 sm:tw-mt-0">
+                            Mapas
+                        </TitleEffects>
+                        <div className="tw-relative tw-pb-20 sm:tw-pb-0 tw-pr-0 tw-mt-4  md:tw-ml-32 md:tw-mr-20">
+                            <div className="tw-w-full tw-overflow-visible tw-relative">
+                                {viewData.length > 0 && map ? (
+                                    <>
+                                        <SliderValorant
+                                            data={viewData}
+                                            setMap={setMap}
+                                            setIndex={setIndex}
+                                        />
+                                        <CardDataMap map={map} index={index} />
+                                    </>
+                                ) : (
+                                    ""
+                                )}
+                            </div>
+                        </div>
+                    </ContentWhitLines>
+                </ContainerWhitLines>
+            )}
+        </>
     );
 };
 

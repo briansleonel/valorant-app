@@ -60,7 +60,39 @@ export const SubContainer = styled.div`
     width: 100%;
     height: 100%;
     min-height: fit-content;
-`
+`;
+
+export const SubContainerAbsolute = styled(SubContainer)`
+    width: 100%;
+    height: calc(100vh - 4em);
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &::after {
+        content: "";
+        display: block;
+        height: 100%;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+
+        border-left: 1px solid ${colorsApp.dark[500]};
+        left: 5%;
+    }
+
+    @media only screen and (${devices.lg}) {
+        padding-left: 7.3%;
+        padding-right: 7.3%;
+
+        &::after {
+            left: 7.3%;
+            border-left: 1px solid ${colorsApp.gray[400]};
+        }
+    }
+`;
 
 export const SubContainerMinHeight = styled.div`
     margin: 5% 0;
@@ -68,7 +100,7 @@ export const SubContainerMinHeight = styled.div`
     width: 100%;
     height: 100%;
     min-height: 30rem;
-`
+`;
 
 export const Content = styled.div<IProps>`
     margin: 0 auto;

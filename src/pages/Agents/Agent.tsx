@@ -20,6 +20,7 @@ import { ImageAgent } from "../../components/Agents/ImageAgent/ImageAgent";
 import { DropdownLanguage } from "../../components/Forms/Dropdown/DropdownLanguages/DropdownLanguage";
 
 import styles from "./agent.module.css";
+import { Loader } from "../../components/Loader/Loader";
 
 type IParams = {
     agentId: string;
@@ -140,7 +141,7 @@ const Agent = () => {
                     </ContainerRelative>
                 </>
             ) : (
-                "No data"
+                <Loader />
             )}
         </>
     );
