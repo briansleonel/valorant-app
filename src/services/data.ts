@@ -40,8 +40,20 @@ export const valorantApi = createApi({
                 return query;
             },
         }),
+        getWeapons: builder.query({
+            query: (language) => {
+                const query = `${ENDPOINTS_API.weapons}?language=${language}`;
+                console.log(`Fetch data: ${BASE_URL}${query}`);
+                return query;
+            },
+        }),
     }),
 });
 
-export const { useGetAgentsQuery, useGetMapsQuery, useGetGamemodesQuery, useGetAgentByIdQuery } =
-    valorantApi;
+export const {
+    useGetAgentsQuery,
+    useGetMapsQuery,
+    useGetGamemodesQuery,
+    useGetAgentByIdQuery,
+    useGetWeaponsQuery,
+} = valorantApi;

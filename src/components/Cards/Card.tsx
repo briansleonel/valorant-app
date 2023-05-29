@@ -17,9 +17,18 @@ export const CardTitle = styled.h3`
     right: 100%;
 `;
 
+export const CardTitleNormal = styled.h3`
+    display: block;
+    margin-top: 0;
+    font-family: "TungstenBold", arial, georgia, sans-serif;
+    text-transform: uppercase;
+    font-size: 2em;
+    line-height: normal;
+`;
+
 export const CardText = styled.p`
     font-family: "dinnextw1g", arial, georgia, sans-serif;
-    font-size: 1.4em;
+    font-size: 1.2em;
 
     @media screen and (${devices.sm}) {
         font-size: 1.2em;
@@ -41,16 +50,28 @@ export const CardBody = styled.div`
     }
 `;
 
-export const CardImg = styled.img`
-    width: 100%;
-`
+export const CardImg = styled.img<{ width?: string; height?: string }>`
+    margin: 0 auto;
+    width: ${(p) => (p.width ? "" : "100%")};
+    height: ${(p) => (p.height ? p.height : "")};
+`;
+
+export const CardImgScale = styled(CardImg)`
+    object-fit: scale-down;
+`;
 
 export const CardContent = styled.div`
     width: 100%;
+    height: 100%;
     padding: 0.6em;
     background-color: ${colorsApp.blue};
     color: ${colorsApp.gray[200]};
     position: relative;
+`;
+
+export const CardContentFlex = styled(CardContent)`
+    height: 10rem;
+    display: flex;
 `;
 
 export const CardContainer = styled.div`

@@ -4,6 +4,7 @@ import {
     useGetAgentsQuery,
     useGetGamemodesQuery,
     useGetMapsQuery,
+    useGetWeaponsQuery,
 } from "../services/data";
 
 function genericFindByDisplayName<T>(
@@ -23,7 +24,7 @@ function genericFindByDisplayName<T>(
 }
 
 interface TypeEndpoint {
-    endpoint: "agents" | "maps" | "gamemodes";
+    endpoint: "agents" | "maps" | "gamemodes" | "weapons";
 }
 
 export function useData<T>({ endpoint }: TypeEndpoint) {
@@ -36,7 +37,7 @@ export function useData<T>({ endpoint }: TypeEndpoint) {
             ? useGetAgentsQuery(language)
             : endpoint === "maps"
             ? useGetMapsQuery(language)
-            : useGetGamemodesQuery(language);
+            : endpoint === "gamemodes" ? useGetGamemodesQuery(language) : useGetWeaponsQuery(language);
 
     const [viewData, setViewData] = useState<Array<T>>([]);
 

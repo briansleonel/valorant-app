@@ -26,7 +26,7 @@ type IParams = {
     agentId: string;
 };
 
-const Agent = () => {
+const AgentPage = () => {
     const [agent, setAgent] = useState<IAgentApi>();
 
     const { agentId } = useParams<IParams>();
@@ -147,7 +147,7 @@ const Agent = () => {
     );
 };
 
-export default Agent;
+export default AgentPage;
 
 /*
 <ContainerRelative color={colorsApp.gray[400]}>

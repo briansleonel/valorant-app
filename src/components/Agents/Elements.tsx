@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { devices } from "../../config/styles/breakpoint";
-
-import styles from "./elements.module.css";
 import { colorsApp } from "../../config/styles/colors";
 
 export const Wrapper = styled.div`

@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../../components/layout/Layout";
 import ErrorPage from "../../pages/ErrorPage";
-import Home from "../../pages/Home/Home";
-import GameInfo from "../../pages/GameInfo";
-import AgentsPage from "../../pages/Agents/Agents";
-import MapsPage from "../../pages/Maps";
+import Home from "../../pages/Home";
+import AgentsPage from "../../pages/Agents/AgentsPage";
+import MapsPage from "../../pages/MapsPage";
 import GamemodesPage from "../../pages/GamemodesPage";
 import About from "../../pages/About";
-import Agent from "../../pages/Agents/Agent";
+import AgentPage from "../../pages/Agents/AgentPage";
+import WeaponsPage from "../../pages/WeaponsPage";
 
 const routes = [
     {
@@ -26,11 +26,19 @@ const routes = [
             },
             {
                 path: "agents/:agentId",
-                element: <Agent />,
+                element: <AgentPage />,
             },
             {
                 path: "maps",
                 element: <MapsPage />,
+            },
+            {
+                path: "gamemodes",
+                element: <GamemodesPage />,
+            },
+            {
+                path: "weapons",
+                element: <WeaponsPage />,
             },
             {
                 path: "about",

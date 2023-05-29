@@ -1,4 +1,4 @@
-import GamemodesCards from "../components/Cards/GamemodesCards";
+import { WeaponsCards } from "../components/Cards/WeaponsCards";
 import { DropdownLanguage } from "../components/Forms/Dropdown/DropdownLanguages/DropdownLanguage";
 import { Loader } from "../components/Loader/Loader";
 import {
@@ -13,14 +13,11 @@ import {
 } from "../components/StyledComponents/title.styled-component.tsx";
 import { colorsApp } from "../config/styles/colors";
 import { useData } from "../hooks/useData";
-import { IGamemodeApi } from "../types/gamemodes";
 
 import styles from "./global.module.css";
 
-const GamemodesPage = (): JSX.Element => {
-    const { error, isLoading, viewData } = useData<IGamemodeApi>({
-        endpoint: "gamemodes",
-    });
+const WeaponsPage = () => {
+    const { error, isLoading, viewData } = useData({ endpoint: "weapons" });
 
     return (
         <>
@@ -35,9 +32,7 @@ const GamemodesPage = (): JSX.Element => {
                             <span></span>
                         </picture>
                         <SubContainerMinHeight minHeight="12m;">
-                            <Title color={colorsApp.gray[300]}>
-                                Modos de Juego
-                            </Title>
+                            <Title color={colorsApp.gray[300]}>Armas</Title>
 
                             <div className={styles.wrapper}>
                                 <div className={styles.language}>
@@ -53,30 +48,31 @@ const GamemodesPage = (): JSX.Element => {
                                 </div>
 
                                 <div className={styles.infoRight}>
-                                    <Subtitle>// Conocé los modos</Subtitle>
+                                    <Subtitle>// Conocé las armas</Subtitle>
                                     <Paragraph
                                         className="tw-mt-4"
                                         border={true}
                                     >
-                                        Descubre todos los modos de juegos que
-                                        podes escoger en Valorant y preparate
-                                        para la aventura.
+                                        Elige tu arma y prepárate para esta gran
+                                        aventura. ¿Estás listo para unirte a la
+                                        experiencia?
                                     </Paragraph>
                                 </div>
                             </div>
                         </SubContainerMinHeight>
                     </ContainerRelative>
+
                     <ContainerRelative>
-                        <SubContainer className="sm:tw-hidden !tw-mt-8">
-                            <Subtitle>// Conocé los modos</Subtitle>
-                            <Paragraph className="tw-mt-4 tw-mb-10">
-                                Descubre todos los modos de juegos que podes
-                                escoger en Valorant y preparate para la
-                                aventura.
+                        <SubContainer className="sm:tw-hidden !tw-mt-2">
+                            <Subtitle>// Conocé las armas</Subtitle>
+                            <Paragraph className="tw-mt-4 tw-mb-6">
+                                Elige tu arma y prepárate para esta gran
+                                aventura. ¿Estás listo para unirte a la
+                                experiencia?
                             </Paragraph>
                             <label
                                 htmlFor="language"
-                                className="tw-text-lg tw-text-gray-500"
+                                className="tw-text-lg tw-text-gray-200"
                             >
                                 Idioma
                             </label>
@@ -85,9 +81,10 @@ const GamemodesPage = (): JSX.Element => {
                             </div>
                         </SubContainer>
                     </ContainerRelative>
+
                     <ContainerRelative>
                         <SubContainer className="!tw-mt-4 sm:!tw-mt-6">
-                            <GamemodesCards data={viewData} />
+                            <WeaponsCards data={viewData} />
                         </SubContainer>
                     </ContainerRelative>
                 </>
@@ -96,28 +93,4 @@ const GamemodesPage = (): JSX.Element => {
     );
 };
 
-export default GamemodesPage;
-
-/*
-	const dispatch = useAppDispatch();
-	const dataState = useAppSelector((state) => state.data);
-
-	const { language, order, displayName } = useAppSelector(
-		(state) => state.filters,
-	);
-
-	const { error, isLoading, data } = useGetGamemodesQuery(language);
-
-	useEffect(() => {
-		if (!isLoading) {
-			dispatch(setData(data));
-		}
-	}, [data]);
-
-	useEffect(() => {
-		if (displayName !== "") {
-			dispatch(findDataByDisplayName({ displayName, data }));
-			console.log(`Search by displayname: '${displayName}'`);
-		}
-	}, [displayName]);
-	*/
+export default WeaponsPage;

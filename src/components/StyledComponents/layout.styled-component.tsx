@@ -6,6 +6,7 @@ interface IProps {
     color?: string;
     //overflow?: boolean;
     position?: string;
+    minHeight?: string;
 }
 
 export const Container = styled.section<IProps>`
@@ -94,12 +95,12 @@ export const SubContainerAbsolute = styled(SubContainer)`
     }
 `;
 
-export const SubContainerMinHeight = styled.div`
+export const SubContainerMinHeight = styled.div<IProps>`
     margin: 5% 0;
     position: relative;
     width: 100%;
     height: 100%;
-    min-height: 30rem;
+    min-height: ${(p) => (p.minHeight ? p.minHeight : "30rem")};
 `;
 
 export const Content = styled.div<IProps>`

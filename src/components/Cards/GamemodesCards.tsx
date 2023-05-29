@@ -1,37 +1,53 @@
-import { Link } from "react-router-dom";
 import { IGamemodeApi } from "../../types/gamemodes";
+import {
+    CardContainer,
+    CardContent,
+    CardImg,
+    CardText,
+    CardTitleNormal,
+} from "./Card";
 
 interface Props {
     data: Array<IGamemodeApi> | null;
 }
 
-interface PropsGamemodeCard {
+interface PropsGamemode {
     gamemode: IGamemodeApi;
 }
 
 const GamemodesCards = ({ data }: Props): JSX.Element => {
     return (
-        <section>
+        <div className="tw-grid tw-grid-cols-1 tw-gap-6 tw-px-4 tw-pb-2 sm:tw-pt-0 sm:tw-px-10 sm:tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-5 ">
             {data !== null && data.length > 0
                 ? data.map((element) => {
-                      return (
-                          <Link to={"/"} key={element.uuid}>
-                              <GamemodeCard gamemode={element} />
-                          </Link>
-                      );
+                      return <GameMode key={element.uuid} gamemode={element} />;
                   })
                 : "No data"}
-        </section>
+        </div>
     );
 };
 
-const GamemodeCard = ({ gamemode }: PropsGamemodeCard): JSX.Element => {
+const GameMode = ({ gamemode }: PropsGamemode) => {
     return (
-        <div>
-            <img src={gamemode.displayIcon} alt={gamemode.displayName} />
-            <h3> {gamemode.displayName} </h3>
-            <p>Duration: {gamemode.duration} </p>
-        </div>
+        <CardContainer>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <CardContent>
+                <CardImg
+                width="80%"
+                    src={
+                        gamemode.displayIcon !== null
+                            ? gamemode.displayIcon
+                            : "/not-availiable-image.png"
+                    }
+                    alt={gamemode.displayName}
+                />
+                <CardTitleNormal className="!tw-mt-2"> {gamemode.displayName} </CardTitleNormal>
+                <CardText>{gamemode.duration}</CardText>
+            </CardContent>
+        </CardContainer>
     );
 };
 

@@ -1,0 +1,59 @@
+.backgroundImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+
+    background-position: 50%;
+    background-size: cover;
+    object-position: center;
+    object-fit: cover;
+}
+
+.backgroundImage span {
+    background-image: url(../assets/img/agents-background.jpg);
+    background-position: top;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 24em;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    position: relative;
+    align-items: stretch;
+}
+
+.language {
+    width: 15em;
+    position: relative;
+    left: 0;
+    display: none;
+}
+
+.infoRight {
+    width: 20em;
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .backgroundImage {
+        min-height: 40em;
+    }
+    .infoRight {
+        display: block;
+    }
+
+    .language {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+    }
+}

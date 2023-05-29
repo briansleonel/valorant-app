@@ -1,7 +1,7 @@
-import { ButtonValorant } from "../../components/Buttons/ButtonValorant/Button";
-import { BackgroundImgContentFlex, BackgroundImgMain } from "../../components/StyledComponents/backgroundImg.styled-component";
+import { ButtonValorant } from "../components/Buttons/ButtonValorant/Button";
+import { BackgroundImgContentFlex, BackgroundImgMain } from "../components/StyledComponents/backgroundImg.styled-component";
 
-import img from "../../assets/img/valorant-3.jpg"
+import img from "../assets/img/valorant-3.jpg"
 
 const Home = () => {
 	return (

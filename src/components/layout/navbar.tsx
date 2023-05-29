@@ -12,7 +12,7 @@ export const NavBar = () => {
 	return (
 		<Disclosure
 			as="nav"
-			className="tw-bg-black tw-w-full tw-text-gray-200 tw-sticky tw-top-0 tw-z-50"
+			className="tw-bg-black tw-w-full tw-text-gray-200 !tw-sticky tw-top-0 tw-z-50"
 		>
 			{({ open }) => (
 				<>

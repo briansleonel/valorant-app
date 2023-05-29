@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
-import {
-    Title,
-    TitleEffects,
-} from "../components/StyledComponents/title.styled-component.tsx";
-import { useData } from "../hooks/useData";
-import { IMapApi } from "../types/maps";
-import { SliderValorant } from "../components/Slider/SliderValorant";
+import { TitleEffects } from "../components/StyledComponents/title.styled-component.tsx.js";
+import { useData } from "../hooks/useData.js";
+import { IMapApi } from "../types/maps.js";
+import { SliderValorant } from "../components/Slider/SliderValorant.js";
 import {
     ContainerWhitLines,
     ContentWhitLines,
     TextBackground,
-} from "../components/StyledComponents/layout.styled-component";
-import { CardDataMap } from "../components/Maps/CardDataMap";
+} from "../components/StyledComponents/layout.styled-component.js";
+import { CardDataMap } from "../components/Maps/CardDataMap.js";
 import { Loader } from "../components/Loader/Loader.js";
 
 const MapsPage = (): JSX.Element => {
