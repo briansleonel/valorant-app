@@ -9,8 +9,10 @@ interface IProps {
 export const BackgroundImgMain = styled.section<IProps>`
     background: url(${(p) => p.img}) center no-repeat fixed;
     background-size: cover;
-    width: 100vw;
-    height: 100%;
+    //width: 100vw;
+    width: 100%;
+    //height: 100%;
+    height: 100vh;
 
     position: relative;
 `;
@@ -22,7 +24,7 @@ export const BackgroundImgContentFlex = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     color: white;
     padding: auto;
 `;

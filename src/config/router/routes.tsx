@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { RouteObject, createBrowserRouter } from "react-router-dom";
 import Layout from "../../components/layout/Layout";
 import ErrorPage from "../../pages/ErrorPage";
 import Home from "../../pages/Home";
@@ -8,8 +8,9 @@ import GamemodesPage from "../../pages/GamemodesPage";
 import About from "../../pages/About";
 import AgentPage from "../../pages/Agents/AgentPage";
 import WeaponsPage from "../../pages/WeaponsPage";
+import PageNotFound from "../../pages/PageNotFound";
 
-const routes = [
+const routes: Array<RouteObject> = [
     {
         path: "/",
         element: <Layout />,
@@ -43,6 +44,10 @@ const routes = [
             {
                 path: "about",
                 element: <About />,
+            },
+            {
+                path: "*",
+                element: <PageNotFound />,
             },
         ],
     },
