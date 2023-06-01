@@ -11,7 +11,7 @@ export const Footer = () => {
         <Container>
             <SocialNetworks>
                 {socialNetworks.map((e) => (
-                    <ButtonSocialMedia href={e.href} key={e.name}>
+                    <ButtonSocialMedia href={e.href} key={e.name} target="_blank">
                         {e.icon}
                     </ButtonSocialMedia>
                 ))}
