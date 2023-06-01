@@ -1,6 +1,4 @@
 import AgentCards from "../../components/Cards/AgentCards";
-import { IAgentApi } from "../../types/agents";
-import { useData } from "../../hooks/useData";
 import FiltersComponent from "../../components/Filter/Filters";
 
 import imageBackground from "../../assets/img/agents-background.jpg";
@@ -22,9 +20,10 @@ import { ImageMain } from "../../components/Agents/ImageAgent/ImageMain";
 import { Loader } from "../../components/Loader/Loader";
 import { ButtonToTop } from "../../components/Buttons/ButtonToTop/ButtonToTop";
 import { Footer } from "../../components/Footer/Footer";
+import { useDataAgent } from "../../hooks/useDataAgents";
 
 const AgentsPage = (): JSX.Element => {
-    const { error, isLoading, viewData } = useData<IAgentApi>({
+    const { error, isLoading, viewData } = useDataAgent({
         endpoint: "agents",
     });
 

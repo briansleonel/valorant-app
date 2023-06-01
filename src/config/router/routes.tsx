@@ -5,7 +5,6 @@ import Home from "../../pages/Home";
 import AgentsPage from "../../pages/Agents/AgentsPage";
 import MapsPage from "../../pages/MapsPage";
 import GamemodesPage from "../../pages/GamemodesPage";
-import About from "../../pages/About";
 import AgentPage from "../../pages/Agents/AgentPage";
 import WeaponsPage from "../../pages/WeaponsPage";
 import PageNotFound from "../../pages/PageNotFound";
