@@ -6,6 +6,7 @@ import { IState } from "../../types/api";
 import { IMapApi } from "../../types/maps";
 import { IGamemodeApi } from "../../types/gamemodes";
 
+/*
 type DataState = {
     status: "loading" | "idle";
     error: string | null;
@@ -58,3 +59,5 @@ export const selectStatusData = (state: RootState) => state.data.status;
 export const { setData, findDataByDisplayName } = dataSlice.actions;
 
 export default dataSlice.reducer;
+
+*/
