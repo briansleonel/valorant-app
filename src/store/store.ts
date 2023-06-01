@@ -1,5 +1,4 @@
 import { Middleware, configureStore } from "@reduxjs/toolkit";
-import dataSlice from "./data/dataSlice";
 import filtersSlice from "./filters/filtersSlice";
 import { valorantApi } from "../services/data";
 
@@ -18,7 +17,7 @@ const persistanceLocalStorageMiddleware: Middleware =
 export const store = configureStore({
     reducer: {
         filters: filtersSlice,
-        data: dataSlice,
+        //data: dataSlice,
         [valorantApi.reducerPath]: valorantApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
