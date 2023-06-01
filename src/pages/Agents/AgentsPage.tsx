@@ -20,6 +20,8 @@ import { BackgroundImage } from "../../components/BackgroundImage/BackgroundImag
 import { ContainerInfo, Wrapper } from "../../components/Agents/Elements";
 import { ImageMain } from "../../components/Agents/ImageAgent/ImageMain";
 import { Loader } from "../../components/Loader/Loader";
+import { ButtonToTop } from "../../components/Buttons/ButtonToTop/ButtonToTop";
+import { Footer } from "../../components/Footer/Footer";
 
 const AgentsPage = (): JSX.Element => {
     const { error, isLoading, viewData } = useData<IAgentApi>({
@@ -82,6 +84,11 @@ const AgentsPage = (): JSX.Element => {
 
                     <ContainerRelative>
                         <AgentCards data={viewData} />
+                        <ButtonToTop />
+                    </ContainerRelative>
+
+                    <ContainerRelative>
+                        <Footer />
                     </ContainerRelative>
                 </>
             )}

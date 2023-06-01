@@ -52,7 +52,7 @@ body {
     padding: 0;
     box-sizing: border-box;
 
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.01);
     background-color: rgb(236 232 225);
 }
 

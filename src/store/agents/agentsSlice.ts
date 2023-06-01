@@ -123,7 +123,7 @@ export const agentsSlice = createSlice({
 */
 
 // export selectors
-export const selectStatusDataAgents = (state: RootState) => state.agents.status;
+//export const selectStatusDataAgents = (state: RootState) => state.agents.status;
 
 // export the actions
 export const { setAgents } = agentsSlice.actions;

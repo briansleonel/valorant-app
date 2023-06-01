@@ -21,6 +21,8 @@ import { DropdownLanguage } from "../../components/Forms/Dropdown/DropdownLangua
 
 import styles from "./agent.module.css";
 import { Loader } from "../../components/Loader/Loader";
+import { ButtonToTop } from "../../components/Buttons/ButtonToTop/ButtonToTop";
+import { Footer } from "../../components/Footer/Footer";
 
 type IParams = {
     agentId: string;
@@ -138,6 +140,11 @@ const AgentPage = () => {
                         <SubContainer>
                             <SpecialAbilities abilities={agent.abilities} />
                         </SubContainer>
+                        <ButtonToTop />
+                    </ContainerRelative>
+
+                    <ContainerRelative>
+                        <Footer />
                     </ContainerRelative>
                 </>
             ) : (

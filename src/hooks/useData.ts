@@ -37,7 +37,9 @@ export function useData<T>({ endpoint }: TypeEndpoint) {
             ? useGetAgentsQuery(language)
             : endpoint === "maps"
             ? useGetMapsQuery(language)
-            : endpoint === "gamemodes" ? useGetGamemodesQuery(language) : useGetWeaponsQuery(language);
+            : endpoint === "gamemodes"
+            ? useGetGamemodesQuery(language)
+            : useGetWeaponsQuery(language);
 
     const [viewData, setViewData] = useState<Array<T>>([]);
 

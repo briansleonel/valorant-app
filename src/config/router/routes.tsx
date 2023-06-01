@@ -42,10 +42,6 @@ const routes: Array<RouteObject> = [
                 element: <WeaponsPage />,
             },
             {
-                path: "about",
-                element: <About />,
-            },
-            {
                 path: "*",
                 element: <PageNotFound />,
             },

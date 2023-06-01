@@ -49,7 +49,7 @@ export const SpecialAbilities = ({ abilities }: IProps) => {
                 {mapAbilities()}
             </ul>
 
-            <div className="tw-px-0 sm:tw-px-44 tw-mt-10 tw-mb-6 sm:tw-mb-auto">
+            <div className="tw-px-0 sm:tw-px-44 tw-mt-10 tw-mb-12 sm:tw-mb-auto">
                 <Subtitle className="!tw-text-xl" color={colorsApp.gray[500]}>
                     {`${getKeyAbility(selected)} - ${selected.displayName}`}
                 </Subtitle>

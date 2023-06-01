@@ -1,4 +1,6 @@
+import { ButtonToTop } from "../components/Buttons/ButtonToTop/ButtonToTop";
 import GamemodesCards from "../components/Cards/GamemodesCards";
+import { Footer } from "../components/Footer/Footer";
 import { DropdownLanguage } from "../components/Forms/Dropdown/DropdownLanguages/DropdownLanguage";
 import { Loader } from "../components/Loader/Loader";
 import {
@@ -89,6 +91,11 @@ const GamemodesPage = (): JSX.Element => {
                         <SubContainer className="!tw-mt-4 sm:!tw-mt-6">
                             <GamemodesCards data={viewData} />
                         </SubContainer>
+                        <ButtonToTop />
+                    </ContainerRelative>
+
+                    <ContainerRelative>
+                        <Footer />
                     </ContainerRelative>
                 </>
             )}
